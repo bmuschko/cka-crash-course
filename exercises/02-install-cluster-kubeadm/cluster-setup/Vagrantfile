@@ -1,5 +1,5 @@
 BOX_IMAGE = "bento/ubuntu-16.04"
-WORKER_COUNT = 1
+WORKER_COUNT = 2
 POD_CIDR = "172.18.0.0/16"
 API_ADV_ADDRESS = "10.8.8.10"
 
@@ -13,7 +13,6 @@ Vagrant.configure("2") do |config|
       vb.memory = 2048
     end
     subconfig.vm.provision "shell", path: "common.sh"
-    #subconfig.vm.provision "shell", path: "master.sh"
     subconfig.vm.provision "shell", path: "master.sh", args: "#{POD_CIDR} #{API_ADV_ADDRESS}"
   end
   
@@ -27,6 +26,7 @@ Vagrant.configure("2") do |config|
         vb.memory = 1024
       end
       subconfig.vm.provision "shell", path: "common.sh"
+      subconfig.vm.provision "shell", path: "worker.sh", args: "#{i}"
     end
   end
 
