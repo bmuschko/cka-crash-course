@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 NODE=$1
 NODE_HOST_IP=20+$NODE
 
