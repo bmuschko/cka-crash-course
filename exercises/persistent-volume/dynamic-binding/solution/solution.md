@@ -1,4 +1,4 @@
-List the existing storage classes. You will find that MiniKube already creates a default storage class for you. If you are not going to use dynamic binding then you'll have create the PersistentVolume yourself.
+List the existing storage classes. You will find that MiniKube already creates a default storage class for you.
 
 ```
 $ kubectl get storageclass
