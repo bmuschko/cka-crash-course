@@ -1,3 +1,5 @@
+# Solution
+
 List the existing storage classes. You will find that MiniKube already creates a default storage class for you.
 
 ```

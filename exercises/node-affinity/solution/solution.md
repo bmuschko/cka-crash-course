@@ -1,3 +1,5 @@
+# Solution
+
 The following solution demonstrates the use of Minikube with a single node cluster. For example, you can start the cluster with three nodes with the command `minikube start --nodes 3` for a brand new cluster or with the command `minikube node add` to add nodes to existing cluster.
 
 First, verify the existing nodes.
@@ -26,7 +28,7 @@ minikube-m03   Ready    <none>   3m26s   v1.19.2   beta.kubernetes.io/arch=amd64
 
 The Pod manifest could look as such:
 
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -40,7 +42,7 @@ spec:
     color: green
 ```
 
-Create the Pod and inspect the assign node.
+Create the Pod and inspect the assigned node.
 
 ```
 $ kubectl create -f pod.yaml
