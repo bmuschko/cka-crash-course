@@ -7,3 +7,4 @@ In this exercise, you will use the concept of taints and tolerations. First, you
 3. Add a taint to the node. Set it to `exclusive: yes`.
 4. Modify the live Pod object by adding the following toleration: It should be equal to taint key-value pair and have the effect `NoExecute`.
 5. Observe the running behavior of the Pod. If your cluster has more than a single node where do you expect the Pod to run?
+6. Remove the taint from the node. Do you expect the Pod to still run on the node?

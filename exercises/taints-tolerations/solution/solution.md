@@ -73,3 +73,13 @@ $ kubectl get pods -o=wide
 NAME   READY   STATUS    RESTARTS   AGE   IP           NODE           NOMINATED NODE   READINESS GATES
 app    1/1     Running   0          9s    172.17.0.2   minikube-m03   <none>           <none>
 ```
+
+Remove the taint from the node. The Pod will continue to run on the node.
+
+```
+$ kubectl taint nodes minikube-m03 exclusive-
+node/minikube-m03 untainted
+$ kubectl get pods -o=wide
+NAME   READY   STATUS    RESTARTS   AGE   IP           NODE           NOMINATED NODE   READINESS GATES
+app    1/1     Running   0          49m   172.17.0.2   minikube-m03   <none>           <none>
+```
