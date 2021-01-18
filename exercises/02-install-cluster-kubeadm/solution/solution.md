@@ -1,8 +1,10 @@
 # Solution
 
+You can find a full description of the [installation steps](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) in the official Kubernetes documentation.
+
 ## Initializing the Control Plane on Master Node
 
-After shelling into the master node, run the `kubeadm init` command as root user. The output contains follow up command you will keep track of.
+After shelling into the master node with `vagrant ssh kube-master`, run the `kubeadm init` command as root user. This initializes the control-plane node. The output contains follow up command you will keep track of.
 
 ```
 $ sudo kubeadm init --pod-network-cidr 172.18.0.0/16 --apiserver-advertise-address 10.8.8.10
@@ -31,29 +33,50 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-It's recommended to install a Pod network add-on. We'll use Calico here. The following commands download the manifest with version 3.10, change the IP address range, and then apply the manifest.
+It's recommended to install a Pod network add-on. We'll use Calico here. The following command applies the manifest with version 3.14.
 
 ```
-wget -q https://docs.projectcalico.org/v3.10/manifests/calico.yaml -O /tmp/calico-default.yaml
-sed "s+192.168.0.0/16+$POD_CIDR+g" /tmp/calico-default.yaml > /tmp/calico-defined.yaml
-
-kubectl apply -f /tmp/calico-defined.yaml
-rm /tmp/calico-default.yaml /tmp/calico-defined.yaml
+$ kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+configmap/calico-config configured
+Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org configured
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrole.rbac.authorization.k8s.io/calico-node configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
+daemonset.apps/calico-node configured
+serviceaccount/calico-node unchanged
+deployment.apps/calico-kube-controllers configured
+serviceaccount/calico-kube-controllers unchanged
 ```
 
 The list of nodes should show the following output:
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES    AGE     VERSION
-kube-master     Ready    master   7m42s   v1.19.3
+NAME          STATUS   ROLES                  AGE   VERSION
+kube-master   Ready    control-plane,master   11m   v1.20.2
 ```
 
-Exit the master node.
+Exit the master node by running the `exit` command.
 
 ## Joining the Worker Nodes
 
-Shell into worker node 1 or 2, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command showns an example. Remember that the token and SHA256 hash will be different for you.
+Shell into worker node 1 or 2 with the command `vagrant ssh kube-worker-1` or `vagrant ssh kube-worker-2`, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command showns an example. Remember that the token and SHA256 hash will be different for you.
 
 ```
 $ sudo kubeadm join 10.8.8.10:6443 --token fi8io0.dtkzsy9kws56dmsp --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
@@ -63,8 +86,22 @@ After applying the `join` command for both worker nodes, the list of nodes shoul
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES    AGE   VERSION
-kube-master     Ready    master   43m   v1.19.3
-kube-worker-1   Ready    <none>   36m   v1.19.3
-kube-worker-2   Ready    <none>   61s   v1.19.3
+NAME            STATUS   ROLES                  AGE    VERSION
+kube-master     Ready    control-plane,master   17m    v1.20.2
+kube-worker-1   Ready    <none>                 109s   v1.20.2
+kube-worker-2   Ready    <none>                 39s    v1.20.2
+```
+
+## Verifying the Installation
+
+To verify the installation, you can create a new Pod and inspect which node it is running on.
+
+```
+$ kubectl run nginx --image=nginx
+pod/nginx created
+$ kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          9s
+$ kubectl describe pod nginx | grep Node:
+Node:         kube-worker-1/10.0.2.15
 ```
