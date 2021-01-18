@@ -150,6 +150,7 @@ Failed to connect to database: ER_ACCESS_DENIED_ERROR: Access denied for user 'm
 
 The MySQL Pod does not define a user named `myuser`. The only user that's available is the user named `root`. Therefore, we'll need to change the value of the environment variable `DB_USER` in the `web-app` Pod. Environment variables cannot be changed for a live object. Therefore, the Pod needs to be deleted and recreated.
 
+```
 $ kubectl delete pod web-app -n leo
 pod "web-app" deleted
 $ vim web-app-pod.yaml
