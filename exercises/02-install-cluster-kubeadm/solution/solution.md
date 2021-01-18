@@ -1,6 +1,6 @@
 # Solution
 
-You can find a full description of the [installation steps](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) in the official Kubernetes documentation.
+You can find a full description of the [installation steps](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) in the official Kubernetes documentation. The instructions below describe the manual steps. This directory also contains `Vagrantfile` that creates the full cluster in one swoop without manual intervention.
 
 ## Initializing the Control Plane on Master Node
 
