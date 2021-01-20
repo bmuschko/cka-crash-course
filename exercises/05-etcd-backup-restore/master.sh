@@ -13,6 +13,7 @@ cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
 
+# Install etcdctl
 ETCD_VERSION="v3.4.14"
 wget https://github.com/etcd-io/etcd/releases/download/$ETCD_VERSION/etcd-$ETCD_VERSION-linux-amd64.tar.gz -O /tmp/etcd-$ETCD_VERSION-linux-amd64.tar.gz
 tar xvf /tmp/etcd-$ETCD_VERSION-linux-amd64.tar.gz -C /tmp
