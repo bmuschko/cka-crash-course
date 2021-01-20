@@ -1,4 +1,4 @@
-# Exercise 5
+# Exercise 4
 
 In this exercise, you will identify the configuration of the etcd database, back it up and restore the original database from a backup file. The command line tool `etcdctl` has already been pre-installed on the master node.
 

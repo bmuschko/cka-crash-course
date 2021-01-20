@@ -1,4 +1,4 @@
-# Exercise 4
+# Exercise 3
 
 In this exercise, you will learn how to upgrade the cluster version from 1.18.0 to 1.19.0 using kubeadm. The cluster will contain of a single master node named `kube-master`, and one worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
 

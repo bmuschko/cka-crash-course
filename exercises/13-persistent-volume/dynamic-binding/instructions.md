@@ -1,4 +1,4 @@
-# Exercise X
+# Exercise 13
 
 In this exercise, you will create a PersistentVolume using dynamic binding and mount it to a Pod.
 

@@ -1,4 +1,4 @@
-# Exercise X
+# Exercise 10
 
 In this exercise, you will use the concept of taints and tolerations. First, you'll create a Pod. This Pod will be scheduled on one of the nodes. Next, you will add a taint to the node the Pod is running on and set a toleration effect that evicts the Pod from the node.
 

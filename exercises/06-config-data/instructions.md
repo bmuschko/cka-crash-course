@@ -1,0 +1,3 @@
+# Exercise 6
+
+The content overlaps with the curriculum of the CKAD exam. You can find the instructions and the solution in the exercises folder of the GitHub repository bmuschko/ckad-crash-course: [ConfigMap](https://github.com/bmuschko/ckad-crash-course/tree/master/exercises/02-creating-using-configmap) and [Secret](https://github.com/bmuschko/ckad-crash-course/tree/master/exercises/03-creating-using-secret).

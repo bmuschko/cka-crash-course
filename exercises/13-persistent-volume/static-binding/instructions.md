@@ -1,4 +1,4 @@
-# Exercise X
+# Exercise 13
 
 In this exercise, you will create a PersistentVolume using static binding and mount it to a Pod.
 
