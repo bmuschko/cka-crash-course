@@ -16,4 +16,4 @@ All [exercises](./exercises) are numbered and live in dedicated directories star
 
 * [Certified Kubernetes Application Developer (CKAD) Study Guide](https://learning.oreilly.com/library/view/certified-kubernetes-application/9781492083726/)
 * [LinkedIn Learning: Certified Kubernetes Administrator (CKA) Cert Prep: The Basics](https://www.linkedin.com/learning/certified-kubernetes-administrator-cka-cert-prep-the-basics)
-* [KodeKloud CKA Course](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
+* [KodeKloud CKA Course with Practice Tests](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
