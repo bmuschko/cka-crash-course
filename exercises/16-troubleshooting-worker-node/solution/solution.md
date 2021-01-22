@@ -42,7 +42,6 @@ The `journalctl` can provide useful information about the service. It looks like
 ```
 $ sudo journalctl -u kubelet.service
 Jan 21 23:46:49 kube-worker-1 kubelet[6560]: F0121 23:46:49.183791    6560 server.go:257] unable to load client CA file /etc/kubernetes/pki/non-existent-ca.crt: open /etc/kubernetes/pki/non-existent-ca.crt: no such file or directory
-Jan 21 23:46:49 kube-worker-1 kubelet[6560]: goroutine 1 [running]:
 ```
 
 The configuration file can be discovered by rendering the status of the service. The drop-in value points to `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf`.
