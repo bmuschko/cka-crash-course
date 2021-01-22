@@ -77,7 +77,7 @@ The value of the environment variable `KUBELET_CONFIG_ARGS` is `--config=/var/li
 ```
 $ sudo ls /etc/kubernetes/pki
 ca.crt
-sudo vim /var/lib/kubelet/config.yaml
+$ sudo vim /var/lib/kubelet/config.yaml
 ```
 
 Now, let's restart the service.
