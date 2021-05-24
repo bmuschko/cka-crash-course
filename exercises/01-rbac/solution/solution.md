@@ -118,3 +118,11 @@ The `list` operation is allowed for the user `johndoe` and therefore can be used
 $ kubectl get pods
 No resources found in default namespace.
 ```
+
+You can check the permissions of johndoe user even with your admin account. You can make use of following commands
+```
+kubectl auth can-i list po --as johndoe
+kubectl auth can-i get po --as johndoe
+kubectl auth can-i delete po --as johndoe
+
+```
