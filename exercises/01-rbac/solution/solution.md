@@ -126,12 +126,12 @@ You can check the permissions of the `johndoe` user from the default context. As
 ```
 $ kubectl config use-context minikube
 Switched to context "minikube".
-$ kubectl auth can-i list pod --as johndoe
+$ kubectl auth can-i list pods --as johndoe
 yes
-$ kubectl auth can-i get pod --as johndoe
+$ kubectl auth can-i get pods --as johndoe
 yes
-$ kubectl auth can-i watch pod --as johndoe
+$ kubectl auth can-i watch pods --as johndoe
 yes
-$ kubectl auth can-i delete pod --as johndoe
+$ kubectl auth can-i delete pods --as johndoe
 no
 ```
