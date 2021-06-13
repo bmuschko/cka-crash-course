@@ -119,10 +119,17 @@ $ kubectl get pods
 No resources found in default namespace.
 ```
 
-You can check the permissions of johndoe user even with your admin account. You can make use of following commands
-```
-kubectl auth can-i list po --as johndoe
-kubectl auth can-i get po --as johndoe
-kubectl auth can-i delete po --as johndoe
+You can check the permissions of the `johndoe` user from the default context. As you can see, the operations `list`, `get`, and `watch` are permitted, whereas the `delete` operation is forbidden.
 
+```
+$ kubectl config use-context minikube
+Switched to context "minikube".
+$ kubectl auth can-i list pod --as johndoe
+yes
+$ kubectl auth can-i get pod --as johndoe
+yes
+$ kubectl auth can-i watch pod --as johndoe
+yes
+$ kubectl auth can-i delete pod --as johndoe
+no
 ```
