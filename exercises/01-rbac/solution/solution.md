@@ -98,6 +98,8 @@ NAME                                              ROLE              AGE
 rolebinding.rbac.authorization.k8s.io/read-pods   Role/pod-reader   70s
 ```
 
+## Verifying Permissions
+
 Switch to the context `johndoe-context`.
 
 ```
