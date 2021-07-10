@@ -82,4 +82,4 @@ NAME               READY   STATUS    RESTARTS   AGE
 etcd-kube-master   1/1     Running   0          5m1s
 ```
 
-In case the Pod doesn't transition into the "Ready" status, try deleting it manually with the command `kubectl delete pod etcd-kube-master -n kube-system`.
+In case the Pod doesn't transition into the "Running" status, try deleting it manually with the command `kubectl delete pod etcd-kube-master -n kube-system`.
