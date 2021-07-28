@@ -1,6 +1,6 @@
 # Certified Kubernetes Administrator (CKA) Crash Course
 
-The ability to manage, troubleshoot and monitor a Kubernetes cluster is in high demand. In response, the Cloud Native Computing Foundation (CNCF) developed the [Certified Kubernetes Administrator (CKA) certification](https://www.cncf.io/certification/cka/) to establish a administator's credibility and value in the job market to confidently work in a Kubernetes environment. The exam is different from the typical multi-choice format of other certifications. It’s completely performance-based and requires deep knowledge of the tasks at hand under immense time pressure. Are you ready to pass the test on the first go?
+The ability to manage, troubleshoot and monitor a Kubernetes cluster is in high demand. In response, the Cloud Native Computing Foundation (CNCF) developed the [Certified Kubernetes Administrator (CKA) certification](https://www.cncf.io/certification/cka/) to establish a administrator's credibility and value in the job market to confidently work in a Kubernetes environment. The exam is different from the typical multi-choice format of other certifications. It’s completely performance-based and requires deep knowledge of the tasks at hand under immense time pressure. Are you ready to pass the test on the first go?
 
 This practical course is designed to walk you through all the topics covered in the exam to fully prepare to pass the certification exam. The trainer, Benjamin Muschko, will also share his personal experience with preparing for all aspects of the exam.
 
