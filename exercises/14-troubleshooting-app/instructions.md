@@ -24,4 +24,4 @@ The following image shows the high-level architecture.
 4. The Pod running web application exposes the container port 3000. From your machine, execute `curl` or `wget` to access the application through the Service endpoint from outside of the cluster. A successful response should render `Successfully connected to database!`, a failure response should render `Failed to connect to database: <error message>`.
 5. Identify the underlying issue and fix it.
 6. The `curl` or `wget` command should now render the message `Successfully connected to database!`.
-7. Delete the namespace `gemini`.
+7. Delete the namespace `leo`.
