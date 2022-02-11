@@ -1,6 +1,6 @@
 # Solution
 
-## Fixing the issue in namepace "gemini"
+## Fixing the issue in namespace "gemini"
 
 Create the namespace `gemini` with the following command:
 
@@ -35,7 +35,7 @@ service/mysql-service     ClusterIP   10.96.250.63     <none>        3306/TCP   
 service/web-app-service   NodePort    10.100.228.112   <none>        3000:32593/TCP   69s
 ```
 
-Get the IP address of the node. We'll use the IP address for the `curl` command. You can see in the output that there's an issue with to the web application exposed by the Service `web-app-service`. The `curl` simply hangs.
+Get the IP address of the node. We'll use the IP address for the `curl` command. You can see in the output that there's an issue with the web application exposed by the Service `web-app-service`. The `curl` simply hangs.
 
 ```
 $ kubectl get nodes -o wide

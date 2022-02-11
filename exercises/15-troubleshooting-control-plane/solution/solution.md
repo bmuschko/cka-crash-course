@@ -1,6 +1,6 @@
 # Solution
 
-You can see that none of the Pod controlled by the Deployment could be scheduled. They are all in the "Pending" status. The events of the any of the Pods do not reveal any helpful information.
+You can see that none of the Pods controlled by the Deployment could be scheduled. They are all in the "Pending" status. The events of any of the Pods do not reveal any helpful information.
 
 ```
 $ kubectl get deployments,pods
