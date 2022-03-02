@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
     end
     node.vm.provision "shell", path: "../scripts/common.sh"
-    node.vm.provision "shell", path: "master.sh", args: "#{POD_CIDR} #{API_ADV_ADDRESS}"
+    node.vm.provision "shell", path: "../scripts/master.sh", args: "#{POD_CIDR} #{API_ADV_ADDRESS}"
   end
 
   (1..WORKER_COUNT).each do |i|
