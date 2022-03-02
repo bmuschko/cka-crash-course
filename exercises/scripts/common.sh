@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -z ${K8S_VERSION+x} ]; then
+  K8S_VERSION=1.23.4-00
+fi
+
 apt-get update && apt-get install apt-transport-https ca-certificates curl software-properties-common
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo "deb  http://apt.kubernetes.io/  kubernetes-xenial  main" > /etc/apt/sources.list.d/kubernetes.list
@@ -9,8 +13,17 @@ add-apt-repository \
   $(lsb_release -cs) \
   stable"
 apt-get update
-apt-get install -y avahi-daemon libnss-mdns traceroute htop httpie bash-completion docker-ce=5:19.03.14~3-0~ubuntu-bionic kubeadm=1.18.0-00 kubelet=1.18.0-00 kubectl=1.18.0-00
-apt-mark hold docker-ce kubelet kubeadm kubectl
+apt-get install -y \
+  avahi-daemon \
+  libnss-mdns \
+  traceroute \
+  htop \
+  httpie \
+  bash-completion \
+  docker-ce=5:19.03.14~3-0~ubuntu-bionic \
+  kubeadm=$K8S_VERSION \
+  kubelet=$K8S_VERSION \
+  kubectl=$K8S_VERSION
 cat > /etc/docker/daemon.json <<EOF
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
