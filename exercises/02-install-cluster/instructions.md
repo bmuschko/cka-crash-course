@@ -9,7 +9,7 @@ Start the VMs using the command `vagrant up`. Depending on the hardware and netw
 1. Shell into master node using the command `vagrant ssh kube-master`.
 2. Initializing the control plane using the `kubeadm init` command. Provide `172.18.0.0/16` as the IP addresses for the Pod network. Use `192.168.56.10` for the IP address the API Server will advertise it's listening on.
 3. After the `init` command finished, run the necessary commands to run the cluster as non-root user.
-4. Install Calico as with the verison 3.14 using the command `kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml`. For more details on Calico, see the [installation quickstart guide](https://docs.projectcalico.org/getting-started/kubernetes/quickstart).
+4. Install Calico as with the verison 3.14 using the command `kubectl apply -f https://docs.projectcalico.org/v3.22/manifests/calico.yaml`. For more details on Calico, see the [installation quickstart guide](https://docs.projectcalico.org/getting-started/kubernetes/quickstart).
 5. Verify that the master nodes indicates the "Ready" status with the command `kubectl get nodes`.
 6. Exit out of the VM using the command `exit`.
 
