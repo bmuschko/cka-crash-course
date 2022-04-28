@@ -7,7 +7,7 @@ You can find a full description of the [installation steps](https://kubernetes.i
 After shelling into the master node with `vagrant ssh kube-master`, run the `kubeadm init` command as root user. This initializes the control-plane node. The output contains follow up command you will keep track of.
 
 ```
-$ sudo kubeadm init --pod-network-cidr 172.18.0.0/16 --apiserver-advertise-address 10.8.8.10
+$ sudo kubeadm init --pod-network-cidr 172.18.0.0/16 --apiserver-advertise-address 192.168.56.10
 ...
 To start using your cluster, you need to run the following as a regular user:
 
@@ -21,7 +21,7 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 10.8.8.10:6443 --token fi8io0.dtkzsy9kws56dmsp \
+kubeadm join 192.168.56.10:6443 --token fi8io0.dtkzsy9kws56dmsp \
     --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
 ```
 
@@ -36,7 +36,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 It's recommended to install a Pod network add-on. We'll use Calico here. The following command applies the manifest with version 3.14.
 
 ```
-$ kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+$ kubectl apply -f https://docs.projectcalico.org/v3.22/manifests/calico.yaml
 configmap/calico-config configured
 Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
 customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
@@ -79,7 +79,7 @@ Exit the master node by running the `exit` command.
 Shell into worker node 1 or 2 with the command `vagrant ssh kube-worker-1` or `vagrant ssh kube-worker-2`, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command showns an example. Remember that the token and SHA256 hash will be different for you.
 
 ```
-$ sudo kubeadm join 10.8.8.10:6443 --token fi8io0.dtkzsy9kws56dmsp --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
+$ sudo kubeadm join 192.168.56.10:6443 --token fi8io0.dtkzsy9kws56dmsp --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
 ```
 
 After applying the `join` command for both worker nodes, the list of nodes should render the following output. The command needs to be run on the master node.
