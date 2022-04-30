@@ -9,7 +9,7 @@ Start the VMs using the command `vagrant up`. Depending on the hardware and netw
 1. Shell into the master node with `vagrant ssh kube-master`.
 2. Upgrade kubeadm to `1.23.4-00` via `apt-get`. Verify that the correct version has been set.
 3. Drain the control plane node.
-4. Use the appropriate kubeadm command to upgrade the control plane to `1.19.0`.
+4. Use the appropriate kubeadm command to upgrade the control plane to `1.23.4`.
 5. Uncordon the control plane node.
 6. Upgrade kubelet and kubectl to `1.23.4-00`.
 7. Restart the kubelet.
