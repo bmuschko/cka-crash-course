@@ -1,9 +1,9 @@
 # Solution
 
-You should be able to find an Ingress Controller by running the following command in the `kube-system` namespace.
+If you are running Minikube you should be able to find the Ingress Controller Pod by running the following command in the `ingress-nginx` namespace.
 
 ```
-$ kubectl get pods -n kube-system
+$ kubectl get pods -n ingress-nginx
 NAME                                        READY   STATUS      RESTARTS   AGE
 ...
 ingress-nginx-controller-799c9469f7-d8whx   1/1     Running     0          4h24m
@@ -21,17 +21,17 @@ web    1/1     1            1           6s
 $ kubectl expose deployment web --type=NodePort --port=3000
 service/web exposed
 $ kubectl get services
-NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-web          NodePort    10.96.174.197   <none>        3000:30806/TCP   16s
+NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+web          NodePort    10.97.2.103   <none>        3000:31769/TCP   5s
 ```
 
-Make a call to the application using the `curl` command.
+Make a call to the application using the `curl` command. The application will respond with a "Hello World" message.
 
 ```
 $ kubectl get nodes -o wide
-NAME       STATUS   ROLES    AGE    VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE               KERNEL-VERSION   CONTAINER-RUNTIME
-minikube   Ready    master   192d   v1.19.2   192.168.64.2   <none>        Buildroot 2019.02.10   4.19.107         docker://19.3.8
-$ curl 192.168.64.2:30806
+NAME       STATUS   ROLES                  AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE              KERNEL-VERSION   CONTAINER-RUNTIME
+minikube   Ready    control-plane,master   21h   v1.22.3   192.168.64.38   <none>        Buildroot 2021.02.4   4.19.202         docker://20.10.8
+$ curl 192.168.64.38:31769
 Hello World
 ```
 
@@ -64,18 +64,25 @@ Create and list the Ingress.
 $ kubectl create -f ingress.yaml
 ingress.networking.k8s.io/hello-world-ingress created
 $ kubectl get ingress
-Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
-NAME                  CLASS    HOSTS                 ADDRESS        PORTS   AGE
-hello-world-ingress   <none>   hello-world.exposed   192.168.64.2   80      31s
+NAME                  CLASS   HOSTS                 ADDRESS   PORTS   AGE
+hello-world-ingress   nginx   hello-world.exposed             80      13s
 ```
 
-Add the following entry to `/etc/hosts` based on the Ingress' IP address.
+Edit the file `/etc/hosts` via `sudo vim /etc/hosts`. Add the following entry to map the host name `hello-world.exposed` to the node's IP address.
 
 ```
-192.168.64.2 hello-world.exposed
+192.168.64.38 hello-world.exposed
 ```
 
-Make a call to the endpoint.
+The Ingress will now render the value `localhost` in the column "ADDRESS".
+
+```
+$ kubectl get ingress
+NAME                  CLASS   HOSTS                 ADDRESS     PORTS   AGE
+hello-world-ingress   nginx   hello-world.exposed   localhost   80      79s
+```
+
+Make a `curl` call to the host name mapped by the Ingress. The call should be routed toward the backend and respond with the message "Hello World".
 
 ```
 $ curl hello-world.exposed
