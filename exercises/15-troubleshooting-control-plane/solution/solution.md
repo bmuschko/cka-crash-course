@@ -3,10 +3,7 @@
 You can see that none of the Pods controlled by the Deployment could be scheduled. They are all in the "Pending" status. The events of any of the Pods do not reveal any helpful information.
 
 ```
-$ kubectl get deployments,pods
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/deploy   0/3     3            0           7m36s
-
+$ kubectl get pods
 NAME                          READY   STATUS    RESTARTS   AGE
 pod/deploy-6b677fb8f7-4hs4d   0/1     Pending   0          7m28s
 pod/deploy-6b677fb8f7-k69nk   0/1     Pending   0          7m28s
@@ -76,10 +73,7 @@ kube-scheduler-kube-master                 1/1     Running   0          73s
 Once the Pod transitions into the "Running" status, the scheduler should take care of scheduling the Pods of the Deployment `deploy`.
 
 ```
-$ kubectl get deployments,pods
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/deploy   3/3     3            3           25m
-
+$ kubectl get pods
 NAME                          READY   STATUS    RESTARTS   AGE
 pod/deploy-6b677fb8f7-4hs4d   1/1     Running   0          24m
 pod/deploy-6b677fb8f7-k69nk   1/1     Running   0          24m
