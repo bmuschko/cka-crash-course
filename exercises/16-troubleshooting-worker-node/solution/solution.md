@@ -11,8 +11,8 @@ Have a look at the status of the nodes. The worker node has an issue indicated b
 ```
 $ kubectl get nodes
 NAME            STATUS     ROLES                  AGE     VERSION
-kube-master     Ready      control-plane,master   2m52s   v1.20.2
-kube-worker-1   NotReady   <none>                 85s     v1.20.2
+kube-master     Ready      control-plane,master   3m44s   v1.23.4
+kube-worker-1   NotReady   <none>                 2m10s   v1.23.4
 ```
 
 The events of the worker node to not expose any apparent issues.
@@ -71,7 +71,7 @@ ExecStart=
 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
 ```
 
-The value of the environment variable `KUBELET_CONFIG_ARGS` is `--config=/var/lib/kubelet/config.yaml`. Let's fix the file by changing to `clientCAFile: /etc/kubernetes/pki/ca.crt`.
+The value of the environment variable `KUBELET_CONFIG_ARGS` is `--config=/var/lib/kubelet/config.yaml`. Upon inspection of the file, the value of `authentication.x509.clientCAFile` is `/etc/kubernetes/pki/non-existent-ca.crt`. This file does not exist. Let's fix the file by changing to `clientCAFile: /etc/kubernetes/pki/ca.crt`.
 
 ```
 $ sudo ls /etc/kubernetes/pki
@@ -86,11 +86,11 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl restart kubelet
 ```
 
-The worker node should transition into the "Ready" status.
+After waiting a couple of seconds, the worker node should transition into the "Ready" status.
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES                  AGE   VERSION
-kube-master     Ready    control-plane,master   21m   v1.20.2
-kube-worker-1   Ready    <none>                 20m   v1.20.2
+NAME            STATUS   ROLES                  AGE     VERSION
+kube-master     Ready    control-plane,master   10m     v1.23.4
+kube-worker-1   Ready    <none>                 8m53s   v1.23.4
 ```
