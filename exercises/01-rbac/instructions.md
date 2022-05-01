@@ -8,7 +8,7 @@ The following image shows the high-level architecture.
 
 ## Creating the Client Certificate
 
-Run the following commands will create the key and certificate sign request (CSR) needed for the user. The user will be called `johndoe`.
+Run the following commands will create the key and certificate sign request (CSR) needed for the user on Minikube. The user will be called `johndoe`. For detailed information, see this [blog post](https://www.adaltas.com/en/2019/08/07/users-rbac-kubernetes/#users-creation-and-authentication-with-x509-client-certificates). You can assume that you do not have to memorize these instructions for the exam.
 
 ```
 $ mkdir cert && cd cert
