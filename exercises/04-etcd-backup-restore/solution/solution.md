@@ -2,11 +2,11 @@ Etcd is deployed as a Pod in the `kube-system` namespace. Inspect the version by
 
 ```
 $ kubectl get pods -n kube-system
-NAME                 READY   STATUS    RESTARTS   AGE
+NAME                      READY   STATUS    RESTARTS   AGE
 ...
-etcd-kube-master     1/1     Running   0          8m51s
+etcd-kube-control-plane   1/1     Running   0          8m51s
 ...
-$ kubectl describe pod etcd-kube-master -n kube-system
+$ kubectl describe pod etcd-kube-control-plane -n kube-system
 ...
 Containers:
   etcd:
@@ -19,7 +19,7 @@ Containers:
 The same `describe` command reveals the configuration of the etcd service. Look for the value of the option `--listen-client-urls` for the endpoint URL. In the output below, the host is `localhost` and the port is `2379`. The server certificate is located at `/etc/kubernetes/pki/etcd/server.crt` defined by the option `--cert-file`. The CA certificate can be found at `/etc/kubernetes/pki/etcd/ca.crt` specified by the option `--trusted-ca-file`.
 
 ```
-$ kubectl describe pod etcd-kube-master -n kube-system
+$ kubectl describe pod etcd-kube-control-plane -n kube-system
 ...
 Containers:
   etcd:
@@ -76,12 +76,12 @@ spec:
 ...
 ```
 
-The `etcd-kube-master` Pod will be recreated and points to the restored backup directory.
+The `etcd-kube-control-plane` Pod will be recreated and points to the restored backup directory.
 
 ```
-$ kubectl get pod etcd-kube-master -n kube-system
-NAME               READY   STATUS    RESTARTS   AGE
-etcd-kube-master   1/1     Running   0          5m1s
+$ kubectl get pod etcd-kube-control-plane -n kube-system
+NAME                      READY   STATUS    RESTARTS   AGE
+etcd-kube-control-plane   1/1     Running   0          5m1s
 ```
 
-In case the Pod doesn't transition into the "Running" status, try deleting it manually with the command `kubectl delete pod etcd-kube-master -n kube-system`.
+In case the Pod doesn't transition into the "Running" status, try deleting it manually with the command `kubectl delete pod etcd-kube-control-plane -n kube-system`.

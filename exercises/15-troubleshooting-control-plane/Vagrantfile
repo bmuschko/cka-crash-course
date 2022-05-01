@@ -6,16 +6,16 @@ API_ADV_ADDRESS = "192.168.56.10"
 Vagrant.configure("2") do |config|
   config.vm.box = BOX_IMAGE
 
-  config.vm.define "kube-master" do |node|
-    node.vm.hostname = "kube-master"
+  config.vm.define "kube-control-plane" do |node|
+    node.vm.hostname = "kube-control-plane"
     node.vm.network :private_network, ip: "192.168.56.10"
     node.vm.provider :virtualbox do |vb|
-      vb.name = "kube-master"
+      vb.name = "kube-control-plane"
       vb.memory = 2048
       vb.cpus = 2
     end
     node.vm.provision "shell", path: "../scripts/common.sh"
-    node.vm.provision "shell", path: "../scripts/master.sh", args: "#{POD_CIDR} #{API_ADV_ADDRESS}"
+    node.vm.provision "shell", path: "../scripts/control-plane.sh", args: "#{POD_CIDR} #{API_ADV_ADDRESS}"
     node.vm.provision "shell", path: "problem-setup.sh"
   end
 

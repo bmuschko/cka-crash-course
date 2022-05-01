@@ -3,16 +3,16 @@
 Shell into the master node with the following command.
 
 ```
-$ vagrant ssh kube-master
+$ vagrant ssh kube-control-plane
 ```
 
 Have a look at the status of the nodes. The worker node has an issue indicated by "NotReady".
 
 ```
 $ kubectl get nodes
-NAME            STATUS     ROLES                  AGE     VERSION
-kube-master     Ready      control-plane,master   3m44s   v1.23.4
-kube-worker-1   NotReady   <none>                 2m10s   v1.23.4
+NAME                 STATUS     ROLES                  AGE     VERSION
+kube-control-plane   Ready      control-plane,master   3m44s   v1.23.4
+kube-worker-1        NotReady   <none>                 2m10s   v1.23.4
 ```
 
 The events of the worker node to not expose any apparent issues.
@@ -90,7 +90,7 @@ After waiting a couple of seconds, the worker node should transition into the "R
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES                  AGE     VERSION
-kube-master     Ready    control-plane,master   10m     v1.23.4
-kube-worker-1   Ready    <none>                 8m53s   v1.23.4
+NAME                 STATUS   ROLES                  AGE     VERSION
+kube-control-plane   Ready    control-plane,master   10m     v1.23.4
+kube-worker-1        Ready    <none>                 8m53s   v1.23.4
 ```

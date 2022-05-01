@@ -4,7 +4,7 @@ You can find a full description of the [installation steps](https://kubernetes.i
 
 ## Initializing the Control Plane on Master Node
 
-After shelling into the control plane node with `vagrant ssh kube-master`, run the `kubeadm init` command as root user. This initializes the control plane node. The output contains follow up command you will keep track of.
+After shelling into the control plane node with `vagrant ssh kube-control-plane`, run the `kubeadm init` command as root user. This initializes the control plane node. The output contains follow up command you will keep track of.
 
 ```
 $ sudo kubeadm init --pod-network-cidr 172.18.0.0/16 --apiserver-advertise-address 192.168.56.10
@@ -71,8 +71,8 @@ The list of nodes should show the following output:
 
 ```
 $ kubectl get nodes
-NAME          STATUS   ROLES                  AGE   VERSION
-kube-master   Ready    control-plane,master   80s   v1.23.4
+NAME                 STATUS   ROLES                  AGE   VERSION
+kube-control-plane   Ready    control-plane,master   80s   v1.23.4
 ```
 
 Exit the master node by running the `exit` command.
@@ -89,10 +89,10 @@ After applying the `join` command for both worker nodes, the list of nodes shoul
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES                  AGE     VERSION
-kube-master     Ready    control-plane,master   5m1s    v1.23.4
-kube-worker-1   Ready    <none>                 2m22s   v1.23.4
-kube-worker-2   Ready    <none>                 32s     v1.23.4
+NAME                  STATUS   ROLES                  AGE     VERSION
+kube-control-plane    Ready    control-plane,master   5m1s    v1.23.4
+kube-worker-1         Ready    <none>                 2m22s   v1.23.4
+kube-worker-2         Ready    <none>                 32s     v1.23.4
 ```
 
 ## Verifying the Installation

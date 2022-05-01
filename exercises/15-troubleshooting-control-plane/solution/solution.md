@@ -25,15 +25,15 @@ calico-node-5jg9j                          0/1     Pending            0         
 calico-node-f84rt                          0/1     Pending            0          7m41s
 coredns-74ff55c5b-8j2z2                    0/1     Pending            0          7m41s
 coredns-74ff55c5b-sn5zw                    0/1     Pending            0          7m41s
-etcd-kube-master                           1/1     Running            0          7m54s
-kube-apiserver-kube-master                 1/1     Running            0          7m54s
-kube-controller-manager-kube-master        1/1     Running            0          7m54s
+etcd-kube-control-plane                           1/1     Running            0          7m54s
+kube-apiserver-kube-control-plane                 1/1     Running            0          7m54s
+kube-controller-manager-kube-control-plane        1/1     Running            0          7m54s
 kube-proxy-k7sbw                           0/1     Pending            0          7m41s
 kube-proxy-wlzbw                           0/1     Pending            0          5m2s
 kube-proxy-z8tvs                           0/1     Pending            0          6m21s
-kube-scheduler-kube-master                 0/1     CrashLoopBackOff   6          7m49s
+kube-scheduler-kube-control-plane                 0/1     CrashLoopBackOff   6          7m49s
 
-$ kubectl describe pod kube-scheduler-kube-master -n kube-system
+$ kubectl describe pod kube-scheduler-kube-control-plane -n kube-system
 ...
 Events:
   Type     Reason   Age                 From     Message
@@ -47,7 +47,7 @@ Events:
 The logs of the Pod are more helpful. It looks like its configuration points to a file or directory that doesn't exist.
 
 ```
-$ kubectl logs kube-scheduler-kube-master -n kube-system
+$ kubectl logs kube-scheduler-kube-control-plane -n kube-system
 I0121 21:44:46.227895       1 serving.go:331] Generated self-signed cert in-memory
 failed to get delegated authentication kubeconfig: failed to get delegated authentication kubeconfig: stat /etc/kubernetes/scheduler-authentication.conf: no such file or directory
 ```
@@ -62,12 +62,12 @@ admin.conf  controller-manager.conf  kubelet.conf  manifests  pki  scheduler.con
 $ sudo vim /etc/kubernetes/manifests/kube-scheduler.yaml
 ```
 
-After saving the change, the Pod `kube-scheduler-kube-master` will be restarted.
+After saving the change, the Pod `kube-scheduler-kube-control-plane` will be restarted.
 
 ```
 $ kubectl get pods -n kube-system
-NAME                                       READY   STATUS    RESTARTS   AGE
-kube-scheduler-kube-master                 1/1     Running   0          73s
+NAME                                READY   STATUS    RESTARTS   AGE
+kube-scheduler-kube-control-plane   1/1     Running   0          73s
 ```
 
 Once the Pod transitions into the "Running" status, the scheduler should take care of scheduling the Pods of the Deployment `deploy`.

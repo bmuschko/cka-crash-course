@@ -7,16 +7,16 @@ You can find a detailed description of the upgrade steps in the [offical Kuberne
 Shell into the control plane node.
 
 ```
-$ vagrant ssh kube-master
+$ vagrant ssh kube-control-plane
 ```
 
 First, check the nodes and their Kubernetes versions. You will see that all nodes run on version 1.22.0.
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES                  AGE   VERSION
-kube-master     Ready    control-plane,master   13m   v1.22.0
-kube-worker-1   Ready    <none>                 11m   v1.22.0
+NAME                 STATUS   ROLES                  AGE   VERSION
+kube-control-plane   Ready    control-plane,master   13m   v1.22.0
+kube-worker-1        Ready    <none>                 11m   v1.22.0
 ```
 
 Install the kubeadm version 1.23.4-00 and check its version.
@@ -134,11 +134,11 @@ W0430 15:42:42.036071   31381 utils.go:69] The recommended value for "resolvConf
 [upgrade/prepull] This might take a minute or two, depending on the speed of your internet connection
 [upgrade/prepull] You can also perform this action in beforehand using 'kubeadm config images pull'
 [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.23.4"...
-Static pod: kube-apiserver-kube-master hash: 6ebd97c54b6822b4ac0f3641e0e581ec
-Static pod: kube-controller-manager-kube-master hash: eb37d244938e273f3aa6175f5915a10a
-Static pod: kube-scheduler-kube-master hash: dc3438d2485b25a855f7c2e98ac27019
+Static pod: kube-apiserver-kube-control-plane hash: 6ebd97c54b6822b4ac0f3641e0e581ec
+Static pod: kube-controller-manager-kube-control-plane hash: eb37d244938e273f3aa6175f5915a10a
+Static pod: kube-scheduler-kube-control-plane hash: dc3438d2485b25a855f7c2e98ac27019
 [upgrade/etcd] Upgrading to TLS for etcd
-Static pod: etcd-kube-master hash: a2eb3f88b92abd2beeb8f66af044ee78
+Static pod: etcd-kube-control-plane hash: a2eb3f88b92abd2beeb8f66af044ee78
 [upgrade/staticpods] Preparing for "etcd" upgrade
 [upgrade/staticpods] Renewing etcd-server certificate
 [upgrade/staticpods] Renewing etcd-peer certificate
@@ -146,9 +146,9 @@ Static pod: etcd-kube-master hash: a2eb3f88b92abd2beeb8f66af044ee78
 [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2022-04-30-15-43-39/etcd.yaml"
 [upgrade/staticpods] Waiting for the kubelet to restart the component
 [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-Static pod: etcd-kube-master hash: a2eb3f88b92abd2beeb8f66af044ee78
-Static pod: etcd-kube-master hash: a2eb3f88b92abd2beeb8f66af044ee78
-Static pod: etcd-kube-master hash: 8c22dc9c444150fa589557fcea1193e7
+Static pod: etcd-kube-control-plane hash: a2eb3f88b92abd2beeb8f66af044ee78
+Static pod: etcd-kube-control-plane hash: a2eb3f88b92abd2beeb8f66af044ee78
+Static pod: etcd-kube-control-plane hash: 8c22dc9c444150fa589557fcea1193e7
 [apiclient] Found 1 Pods for label selector component=etcd
 [upgrade/staticpods] Component "etcd" upgraded successfully!
 [upgrade/etcd] Waiting for etcd to become available
@@ -161,11 +161,11 @@ Static pod: etcd-kube-master hash: 8c22dc9c444150fa589557fcea1193e7
 [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2022-04-30-15-43-39/kube-apiserver.yaml"
 [upgrade/staticpods] Waiting for the kubelet to restart the component
 [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-Static pod: kube-apiserver-kube-master hash: 6ebd97c54b6822b4ac0f3641e0e581ec
-Static pod: kube-apiserver-kube-master hash: 6ebd97c54b6822b4ac0f3641e0e581ec
-Static pod: kube-apiserver-kube-master hash: 6ebd97c54b6822b4ac0f3641e0e581ec
-Static pod: kube-apiserver-kube-master hash: 6ebd97c54b6822b4ac0f3641e0e581ec
-Static pod: kube-apiserver-kube-master hash: f1f2bfaf096c030e284a331d89091c23
+Static pod: kube-apiserver-kube-control-plane hash: 6ebd97c54b6822b4ac0f3641e0e581ec
+Static pod: kube-apiserver-kube-control-plane hash: 6ebd97c54b6822b4ac0f3641e0e581ec
+Static pod: kube-apiserver-kube-control-plane hash: 6ebd97c54b6822b4ac0f3641e0e581ec
+Static pod: kube-apiserver-kube-control-plane hash: 6ebd97c54b6822b4ac0f3641e0e581ec
+Static pod: kube-apiserver-kube-control-plane hash: f1f2bfaf096c030e284a331d89091c23
 [apiclient] Found 1 Pods for label selector component=kube-apiserver
 [upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
 [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade
@@ -173,8 +173,8 @@ Static pod: kube-apiserver-kube-master hash: f1f2bfaf096c030e284a331d89091c23
 [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2022-04-30-15-43-39/kube-controller-manager.yaml"
 [upgrade/staticpods] Waiting for the kubelet to restart the component
 [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-Static pod: kube-controller-manager-kube-master hash: eb37d244938e273f3aa6175f5915a10a
-Static pod: kube-controller-manager-kube-master hash: 222f5ec997b9a4ab5f63ec1a451fdc2e
+Static pod: kube-controller-manager-kube-control-plane hash: eb37d244938e273f3aa6175f5915a10a
+Static pod: kube-controller-manager-kube-control-plane hash: 222f5ec997b9a4ab5f63ec1a451fdc2e
 [apiclient] Found 1 Pods for label selector component=kube-controller-manager
 [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
 [upgrade/staticpods] Preparing for "kube-scheduler" upgrade
@@ -182,8 +182,8 @@ Static pod: kube-controller-manager-kube-master hash: 222f5ec997b9a4ab5f63ec1a45
 [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2022-04-30-15-43-39/kube-scheduler.yaml"
 [upgrade/staticpods] Waiting for the kubelet to restart the component
 [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-Static pod: kube-scheduler-kube-master hash: dc3438d2485b25a855f7c2e98ac27019
-Static pod: kube-scheduler-kube-master hash: bac96966489e431d9f3f16bcdb8bc893
+Static pod: kube-scheduler-kube-control-plane hash: dc3438d2485b25a855f7c2e98ac27019
+Static pod: kube-scheduler-kube-control-plane hash: bac96966489e431d9f3f16bcdb8bc893
 [apiclient] Found 1 Pods for label selector component=kube-scheduler
 [upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
 [upgrade/postupgrade] Applying label node-role.kubernetes.io/control-plane='' to Nodes with label node-role.kubernetes.io/master='' (deprecated)
@@ -206,14 +206,14 @@ NOTE: The "kubelet-config-1.23" naming of the kubelet ConfigMap is deprecated. O
 Drain the master node by evicting workload.
 
 ```
-$ kubectl drain kube-master --ignore-daemonsets
-node/kube-master cordoned
+$ kubectl drain kube-control-plane --ignore-daemonsets
+node/kube-control-plane cordoned
 WARNING: ignoring DaemonSet-managed Pods: kube-system/calico-node-r2qc6, kube-system/kube-proxy-pgtcj
 evicting pod kube-system/coredns-64897985d-6qldz
 evicting pod kube-system/calico-kube-controllers-65898446b5-cjhdq
 pod/calico-kube-controllers-65898446b5-cjhdq evicted
 pod/coredns-64897985d-6qldz evicted
-node/kube-master evicted
+node/kube-control-plane evicted
 ```
 
 Upgrade kubelet and kubectl.
@@ -262,17 +262,17 @@ $ sudo systemctl restart kubelet
 Bring the node back online by marking it schedulable.
 
 ```
-$ kubectl uncordon kube-master
-node/kube-master uncordoned
+$ kubectl uncordon kube-control-plane
+node/kube-control-plane uncordoned
 ```
 
 The control plane node should now show the usage of Kubernetes 1.23.4.
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES                  AGE   VERSION
-kube-master     Ready    control-plane,master   21m   v1.23.4
-kube-worker-1   Ready    <none>                 19m   v1.22.0
+NAME                 STATUS   ROLES                  AGE   VERSION
+kube-control-plane   Ready    control-plane,master   21m   v1.23.4
+kube-worker-1        Ready    <none>                 19m   v1.22.0
 ```
 
 Exit the master node.
@@ -403,9 +403,9 @@ Listing the nodes should now show version 1.23.4 for the worker node.
 
 ```
 $ kubectl get nodes
-NAME            STATUS   ROLES                  AGE   VERSION
-kube-master     Ready    control-plane,master   23m   v1.23.4
-kube-worker-1   Ready    <none>                 21m   v1.23.4
+NAME                 STATUS   ROLES                  AGE   VERSION
+kube-control-plane   Ready    control-plane,master   23m   v1.23.4
+kube-worker-1        Ready    <none>                 21m   v1.23.4
 ```
 
 Exit the worker node.

@@ -4,7 +4,7 @@ In this exercise, you will identify the configuration of the etcd database, back
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes. After you are done with the exercise, shut down the VMs with the command `vagrant destroy -f`.
 
-1. Shell into master node using the command `vagrant ssh kube-master`.
+1. Shell into master node using the command `vagrant ssh kube-control-plane`.
 2. Check that all nodes have been correctly registered and are in the "Ready" status.
 3. Find out the version of etcd running in the cluster.
 4. Identify the endpoint URL for the etcd service, the location of the server certificate and the location of the CA certificate.
