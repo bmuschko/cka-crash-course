@@ -8,7 +8,7 @@ Attendees will need access to a Kubernetes cluster, either local or remote. Alig
 
 Alternatively, you may also go with [Docker Desktop](https://www.docker.com/products/docker-desktop) which is available for Mac and Windows. Docker Desktop provides an option to start a fully functional Kubernetes environment.
 
-Some of the earlier exercises use an existing cluster setup as the starting point. Install the latest version of the tools [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/).
+Some of the exercises use an existing cluster setup as the starting point. Install the latest version of the tools [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/).
 
 ## Shell Environment and Editor
 
