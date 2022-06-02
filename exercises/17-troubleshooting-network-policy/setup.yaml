@@ -1,0 +1,96 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysql-db
+  name: mysql-db
+spec:
+  containers:
+  - image: mysql:5.6
+    name: mysql-db
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: password
+    ports:
+    - containerPort: 3306
+      protocol: TCP
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysql-service
+  name: mysql-service
+spec:
+  ports:
+  - name: mysql-port
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: mysql-db
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-app
+  name: web-app
+spec:
+  containers:
+  - image: bmuschko/web-app:1.0.1
+    name: web-app
+    env:
+    - name: DB_HOST
+      value: mysql-service
+    - name: DB_USER
+      value: root
+    - name: DB_PASSWORD
+      value: password
+    ports:
+    - containerPort: 3000
+      protocol: TCP
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-app-service
+  name: web-app-service
+spec:
+  ports:
+  - name: web-app-port
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: web-app
+  type: NodePort
+status:
+  loadBalancer: {}
