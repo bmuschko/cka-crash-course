@@ -14,9 +14,9 @@ All [exercises](./exercises) are numbered and live in dedicated directories star
 
 ## Additional Resources
 
-* [Certified Kubernetes Administrator (CKA) Study Guide](https://learning.oreilly.com/library/view/certified-kubernetes-administrator/9781098107215/)
-* [Certified Kubernetes Application Developer (CKAD) Study Guide](https://learning.oreilly.com/library/view/certified-kubernetes-application/9781492083726/)
-* [LinkedIn Learning: Certified Kubernetes Administrator (CKA) Cert Prep: The Basics](https://www.linkedin.com/learning/certified-kubernetes-administrator-cka-cert-prep-the-basics)
-* [Killer Shell](https://killer.sh/)
-* [Study4Exam CKA Exam](https://www.study4exam.com/linux-foundation/info/cka)
-* [KodeKloud CKA Course with Practice Tests](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
+* 📚 [O'Reilly: Certified Kubernetes Administrator (CKA) Study Guide](https://learning.oreilly.com/library/view/certified-kubernetes-administrator/9781098107215/)
+* 📚 [O'Reilly: Certified Kubernetes Application Developer (CKAD) Study Guide](https://learning.oreilly.com/library/view/certified-kubernetes-application/9781492083726/)
+* 🎞️ [LinkedIn Learning: Certified Kubernetes Administrator (CKA) Cert Prep: The Basics](https://www.linkedin.com/learning/certified-kubernetes-administrator-cka-cert-prep-the-basics)
+* 🎞️ [KodeKloud: CKA Certification Course – Certified Kubernetes Administrator](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
+* 🧪 [Killer Shell: CKA Simulator](https://killer.sh/cka)
+* 🧪 [Study4Exam: Certified Kubernetes Administrator Exam](https://www.study4exam.com/linux-foundation/info/cka)
