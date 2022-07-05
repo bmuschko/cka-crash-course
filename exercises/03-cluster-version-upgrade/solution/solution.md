@@ -203,7 +203,7 @@ NOTE: The "kubelet-config-1.23" naming of the kubelet ConfigMap is deprecated. O
 [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven't already done so.
 ```
 
-Drain the master node by evicting workload.
+Drain the control plane node by evicting workload.
 
 ```
 $ kubectl drain kube-control-plane --ignore-daemonsets
@@ -219,7 +219,7 @@ node/kube-control-plane evicted
 Upgrade kubelet and kubectl.
 
 ```
-$ $ sudo apt-mark unhold kubelet kubectl && sudo apt-get update && sudo apt-get install -y kubelet=1.23.4-00 kubectl=1.23.4-00 && sudo apt-mark hold kubelet kubectl
+$ sudo apt-mark unhold kubelet kubectl && sudo apt-get update && sudo apt-get install -y kubelet=1.23.4-00 kubectl=1.23.4-00 && sudo apt-mark hold kubelet kubectl
 kubelet was already not hold.
 kubectl was already not hold.
 Get:2 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
