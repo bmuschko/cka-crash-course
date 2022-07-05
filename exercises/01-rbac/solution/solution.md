@@ -2,7 +2,7 @@
 
 ## Creating the User
 
-Set a user entry in `kubeconfig` for `johndoe` with the following command. Point to the CRT and key file. See the [documetation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information on the kubeconfig file.
+Set a user entry in `kubeconfig` for `johndoe` with the following command. Point to the CRT and key file. See the [documentation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information on the kubeconfig file.
 
 ```
 $ kubectl config set-credentials johndoe --client-certificate=johndoe.crt --client-key=johndoe.key
