@@ -4,6 +4,8 @@ In this exercise, you will learn how to upgrade the cluster version from 1.22.0 
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes. After you are done with the exercise, shut down the VMs with the command `vagrant destroy -f`.
 
+> **_NOTE:_** If you do not want to use the Vagrant environment, you can use the Katacoda scenario ["Upgrading a cluster version"](https://learning.oreilly.com/scenarios/cka-prep-upgrading/9781492095514/).
+
 ## Upgrading the Control Plane Node
 
 1. Shell into the control plane node with `vagrant ssh kube-control-plane`.

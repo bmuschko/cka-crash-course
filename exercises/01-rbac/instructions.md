@@ -6,6 +6,8 @@ The following image shows the high-level architecture.
 
 ![rbac](imgs/rbac.png)
 
+> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda scenario ["Setting up RBAC for a user"](https://learning.oreilly.com/scenarios/cka-prep-setting/9781492095477/).
+
 ## Creating the Client Certificate
 
 Run the following commands will create the key and certificate sign request (CSR) needed for the user on Minikube. The user will be called `johndoe`. For detailed information, see this [blog post](https://www.adaltas.com/en/2019/08/07/users-rbac-kubernetes/#users-creation-and-authentication-with-x509-client-certificates). You can assume that you do not have to memorize these instructions for the exam.
