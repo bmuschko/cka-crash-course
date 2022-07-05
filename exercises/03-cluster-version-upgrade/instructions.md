@@ -1,12 +1,12 @@
 # Exercise 3
 
-In this exercise, you will learn how to upgrade the cluster version from 1.22.0 to 1.23.4 using kubeadm. The cluster will contain of a single master node named `kube-control-plane`, and one worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
+In this exercise, you will learn how to upgrade the cluster version from 1.22.0 to 1.23.4 using kubeadm. The cluster will contain of a single control plane node named `kube-control-plane`, and one worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes. After you are done with the exercise, shut down the VMs with the command `vagrant destroy -f`.
 
-## Upgrading the Master Node
+## Upgrading the Control Plane Node
 
-1. Shell into the master node with `vagrant ssh kube-control-plane`.
+1. Shell into the control plane node with `vagrant ssh kube-control-plane`.
 2. Upgrade kubeadm to `1.23.4-00` via `apt-get`. Verify that the correct version has been set.
 3. Drain the control plane node.
 4. Use the appropriate kubeadm command to upgrade the control plane to `1.23.4`.
