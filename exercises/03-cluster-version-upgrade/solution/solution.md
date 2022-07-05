@@ -2,7 +2,7 @@
 
 You can find a detailed description of the upgrade steps in the [offical Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 
-## Upgrading the Master Node
+## Upgrading the Control Plane Node
 
 Shell into the control plane node.
 
@@ -275,7 +275,7 @@ kube-control-plane   Ready    control-plane,master   21m   v1.23.4
 kube-worker-1        Ready    <none>                 19m   v1.22.0
 ```
 
-Exit the master node.
+Exit the control plane node.
 
 ```
 $ exit
