@@ -4,7 +4,7 @@ In this exercise, you will learn how to create a cluster using kubeadm. The clus
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes. After you are done with the exercise, shut down the VMs with the command `vagrant destroy -f`.
 
-## Initializing the Control Plane on Control Plane Node
+## Initializing the Control Plane Node
 
 1. Shell into control plane node using the command `vagrant ssh kube-control-plane`.
 2. Initializing the control plane using the `kubeadm init` command. Provide `172.18.0.0/16` as the IP addresses for the Pod network. Use `192.168.56.10` for the IP address the API Server will advertise it's listening on.
