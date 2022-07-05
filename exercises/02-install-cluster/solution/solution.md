@@ -2,7 +2,7 @@
 
 You can find a full description of the [installation steps](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) in the official Kubernetes documentation. The instructions below describe the manual steps. This directory also contains `Vagrantfile` that creates the full cluster in one swoop without manual intervention.
 
-## Initializing the Control Plane on Master Node
+## Initializing the Control Plane Node
 
 After shelling into the control plane node with `vagrant ssh kube-control-plane`, run the `kubeadm init` command as root user. This initializes the control plane node. The output contains follow up command you will keep track of.
 
@@ -75,7 +75,7 @@ NAME                 STATUS   ROLES                  AGE   VERSION
 kube-control-plane   Ready    control-plane,master   80s   v1.23.4
 ```
 
-Exit the master node by running the `exit` command.
+Exit the control plane node by running the `exit` command.
 
 ## Joining the Worker Nodes
 
