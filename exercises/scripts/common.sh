@@ -39,3 +39,6 @@ mkdir -p /etc/systemd/system/docker.service.d
 
 systemctl daemon-reload
 systemctl restart docker
+
+# Set alias for kubectl command
+echo "alias k=kubectl" >> /home/vagrant/.bashrc
