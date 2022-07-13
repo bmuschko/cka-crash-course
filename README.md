@@ -18,5 +18,6 @@ All [exercises](./exercises) are numbered and live in dedicated directories star
 * 📚 [O'Reilly: Certified Kubernetes Application Developer (CKAD) Study Guide](https://learning.oreilly.com/library/view/certified-kubernetes-application/9781492083726/)
 * 🎞️ [LinkedIn Learning: Certified Kubernetes Administrator (CKA) Cert Prep: The Basics](https://www.linkedin.com/learning/certified-kubernetes-administrator-cka-cert-prep-the-basics)
 * 🎞️ [KodeKloud: CKA Certification Course – Certified Kubernetes Administrator](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
+* 🧪 [O'Reilly: Katacoda Practice Labs](https://learning.oreilly.com/playlists/65351d22-34eb-4be3-9f35-d9c0b184449f/)
 * 🧪 [Killer Shell: CKA Simulator](https://killer.sh/cka)
 * 🧪 [Study4Exam: Certified Kubernetes Administrator Exam](https://www.study4exam.com/linux-foundation/info/cka)
