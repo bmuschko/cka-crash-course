@@ -36,7 +36,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 It's recommended to install a Pod network add-on. We'll use Calico here. The following command applies the manifest with version 3.22.
 
 ```
-$ kubectl apply -f https://docs.projectcalico.org/v3.22/manifests/calico.yaml
+$ kubectl apply -f https://projectcalico.docs.tigera.io/archive/v3.22/manifests/calico.yaml
 configmap/calico-config created
 customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
 customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
