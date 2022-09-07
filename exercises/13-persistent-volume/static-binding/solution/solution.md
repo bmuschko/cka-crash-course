@@ -9,7 +9,7 @@ metadata:
   name: pv
 spec:
   capacity:
-    storage: 512m
+    storage: 512Mi
   accessModes:
     - ReadWriteMany
   hostPath:
@@ -23,7 +23,7 @@ $ kubectl create -f pv.yaml
 persistentvolume/pv created
 $ kubectl get pv
 NAME   CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   REASON   AGE
-pv     512m       RWX            Retain           Available                                   12s
+pv     512Mi      RWX            Retain           Available                                   12s
 ```
 
 Create a manifest for the PersistentVolumeClaim and store it in the file `pvc.yaml`.
@@ -36,19 +36,20 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName: ""
   resources:
     requests:
-      storage: 256m
+      storage: 256Mi
 ```
 
-Create the PersistentVolumeClaim with the following command. You will see that the storage class assigned to the PersistentVolumeClaim. Listing the PersistentVolumes will also reveal that the object has been created for your automatically.
+Create the PersistentVolumeClaim with the following command. You will see that the PersistentVolumeClaim has a status of "Bound".
 
 ```
 $ kubectl create -f pvc.yaml
 persistentvolumeclaim/pvc created
 $ kubectl get pvc
-NAME   STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-pvc    Bound    pvc-8c5a1e6b-e8e7-4209-a6bb-c82f8537179f   256m       RWX            standard       3s
+NAME   STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvc    Bound    pv       512Mi      RWX                           2s
 ```
 
 Create a manifest for the Pod and store it in the file `pod.yaml`.

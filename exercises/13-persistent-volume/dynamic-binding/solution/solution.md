@@ -46,7 +46,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 256m
+      storage: 256Mi
   storageClassName: custom
 ```
 
@@ -57,10 +57,10 @@ $ kubectl create -f pvc.yaml
 persistentvolumeclaim/pvc created
 $ kubectl get pvc
 NAME   STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-pvc    Bound    pvc-e55399e7-2f49-443e-8fd9-659588b01071   256m       RWX            custom         22s
+pvc    Bound    pvc-e55399e7-2f49-443e-8fd9-659588b01071   256Mi      RWX            custom         22s
 $ kubectl get pv
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM         STORAGECLASS   REASON   AGE
-pvc-e55399e7-2f49-443e-8fd9-659588b01071   256m       RWX            Delete           Bound    default/pvc   custom                  21m
+pvc-e55399e7-2f49-443e-8fd9-659588b01071   256Mi      RWX            Delete           Bound    default/pvc   custom                  21m
 ```
 
 Create a manifest for the Pod and store it in the file `pod.yaml`.
