@@ -2,7 +2,7 @@
 
 In this exercise, you will create a PersistentVolume using dynamic binding and mount it to a Pod.
 
-> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda scenario ["Creating a PersistentVolume via dynamic binding"](https://learning.oreilly.com/scenarios/cka-prep-creating/9781492099161/).
+> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda lab ["Creating a PersistentVolume via dynamic binding"](https://learning.oreilly.com/scenarios/cka-prep-creating/9781492099161/).
 
 1. List all the storage class objects in the `default` namespace.
 2. If you are trying out dynamic binding, then create a new storage class with appropriate settings for your Kubernetes environment. Name the storage class object `custom`. On Minikube, use the provisioner `k8s.io/minikube-hostpath`. Assign the annotation `storageclass.beta.kubernetes.io/is-default-class: "false"` and the label `addonmanager.kubernetes.io/mode: Reconcile`.
