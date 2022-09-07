@@ -2,7 +2,7 @@
 
 In this exercise, you will create an Ingress with a simple rule. Make sure your cluster employs an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/). On minikube, you can enable the Ingress Controller with the command `minikube addons enable ingress`.
 
-> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda scenario ["Creating an Ingress"](https://learning.oreilly.com/scenarios/cka-prep-creating/9781492099130/).
+> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda lab ["Creating an Ingress"](https://learning.oreilly.com/scenarios/cka-prep-creating/9781492099130/).
 
 1. Verify that the Ingress Controller is running.
 2. Create a new Deployment with the image `bmuschko/nodejs-hello-world:1.0.0`.

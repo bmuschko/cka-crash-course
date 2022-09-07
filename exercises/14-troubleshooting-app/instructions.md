@@ -6,7 +6,7 @@ The following image shows the high-level architecture.
 
 ![app-architecture](imgs/app-architecture.png)
 
-> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda scenario ["Troubleshooting a Deployment"](https://learning.oreilly.com/scenarios/cka-prep-troubleshooting/9781492099192/).
+> **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda lab ["Troubleshooting a Deployment"](https://learning.oreilly.com/scenarios/cka-prep-troubleshooting/9781492099192/).
 
 ## Fixing the issue in namepace "gemini"
 

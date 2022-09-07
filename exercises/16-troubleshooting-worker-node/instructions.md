@@ -4,7 +4,7 @@ In this exercise, you will learn how to troubleshooting the underlying issue of 
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes. After you are done with the exercise, shut down the VMs with the command `vagrant destroy -f`.
 
-> **_NOTE:_** If you do not want to use the Vagrant environment, you can use the Katacoda scenario ["Troubleshooting a worker node"](https://learning.oreilly.com/scenarios/cka-prep-troubleshooting/9781492099222/).
+> **_NOTE:_** If you do not want to use the Vagrant environment, you can use the Katacoda lab ["Troubleshooting a worker node"](https://learning.oreilly.com/scenarios/cka-prep-troubleshooting/9781492099222/).
 
 1. Check the status of the nodes. Do you see an issue?
 2. Shell into the node having an issue and identify the root cause.

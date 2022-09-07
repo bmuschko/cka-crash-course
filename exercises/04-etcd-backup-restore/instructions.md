@@ -4,7 +4,7 @@ In this exercise, you will identify the configuration of the etcd database, back
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes. After you are done with the exercise, shut down the VMs with the command `vagrant destroy -f`.
 
-> **_NOTE:_** If you do not want to use the Vagrant environment, you can use the Katacoda scenario ["Backing up and restoring etcd"](https://learning.oreilly.com/scenarios/cka-prep-backing/9781492095521/).
+> **_NOTE:_** If you do not want to use the Vagrant environment, you can use the Katacoda lab ["Backing up and restoring etcd"](https://learning.oreilly.com/scenarios/cka-prep-backing/9781492095521/).
 
 1. Shell into control plane node using the command `vagrant ssh kube-control-plane`.
 2. Check that all nodes have been correctly registered and are in the "Ready" status.
