@@ -39,8 +39,8 @@ Get the IP address of the node. We'll use the IP address for the `curl` command.
 
 ```
 $ kubectl get nodes -o wide
-NAME       STATUS   ROLES    AGE    VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE               KERNEL-VERSION   CONTAINER-RUNTIME
-minikube   Ready    master   147d   v1.19.2   192.168.64.2   <none>        Buildroot 2019.02.10   4.19.107         docker://19.3.8
+NAME       STATUS   ROLES           AGE    VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE               KERNEL-VERSION   CONTAINER-RUNTIME
+minikube   Ready    control-plane   147d   v1.19.2   192.168.64.2   <none>        Buildroot 2019.02.10   4.19.107         docker://19.3.8
 $ curl 192.168.64.2:32593 -m 10
 curl: (28) Connection timed out after 10004 milliseconds
 ```
@@ -142,8 +142,8 @@ Get the IP address of the node. We'll use the IP address for the `curl` command.
 
 ```
 $ kubectl get nodes -o wide
-NAME       STATUS   ROLES    AGE    VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE               KERNEL-VERSION   CONTAINER-RUNTIME
-minikube   Ready    master   147d   v1.19.2   192.168.64.2   <none>        Buildroot 2019.02.10   4.19.107         docker://19.3.8
+NAME       STATUS   ROLES           AGE    VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE               KERNEL-VERSION   CONTAINER-RUNTIME
+minikube   Ready    control-plane   147d   v1.19.2   192.168.64.2   <none>        Buildroot 2019.02.10   4.19.107         docker://19.3.8
 $ curl 192.168.64.2:31003
 Failed to connect to database: ER_ACCESS_DENIED_ERROR: Access denied for user 'myuser'@'10.0.0.58' (using password: YES)
 ```

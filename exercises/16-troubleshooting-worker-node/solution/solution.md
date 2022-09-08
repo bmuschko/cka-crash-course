@@ -1,6 +1,6 @@
 # Solution
 
-Shell into the master node with the following command.
+Shell into the control plane node with the following command.
 
 ```
 $ vagrant ssh kube-control-plane
@@ -30,7 +30,7 @@ Events:
   Normal  NodeAllocatableEnforced  4m15s                  kubelet  Updated Node Allocatable limit across pods
 ```
 
-Exit the master node and shell into the worker node.
+Exit the control plane node and shell into the worker node.
 
 ```
 $ exit

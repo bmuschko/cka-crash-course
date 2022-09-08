@@ -10,7 +10,7 @@ In this exercise, you will learn how to create a cluster using kubeadm. The clus
 2. Initializing the control plane using the `kubeadm init` command. Provide `172.18.0.0/16` as the IP addresses for the Pod network. Use `192.168.56.10` for the IP address the API Server will advertise it's listening on.
 3. After the `init` command finished, run the necessary commands to run the cluster as non-root user.
 4. Install Calico as with the version 3.22 using the command `kubectl apply -f https://projectcalico.docs.tigera.io/archive/v3.22/manifests/calico.yaml`. For more details on Calico, see the [installation quickstart guide](https://docs.projectcalico.org/getting-started/kubernetes/quickstart).
-5. Verify that the master nodes indicates the "Ready" status with the command `kubectl get nodes`.
+5. Verify that the control plabe node indicates the "Ready" status with the command `kubectl get nodes`.
 6. Exit out of the VM using the command `exit`.
 
 ## Joining the Worker Nodes
