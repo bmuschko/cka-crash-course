@@ -1,29 +1,18 @@
 # Solution
 
-The following solution demonstrates the use of Minikube with a single node cluster. For example, you can start the cluster with three nodes with the command `minikube start --nodes 3` for a brand new cluster or with the command `minikube node add` to add nodes to existing cluster.
+The following solution demonstrates the use of a multi-node Minikube cluster. Listing the nodes renders the following output.
 
-The Pod manifest could look as such:
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: app
-spec:
-  containers:
-  - image: nginx
-    name: nginx
-  restartPolicy: Never
+```
+$ kubectl get nodes
+NAME           STATUS   ROLES           AGE     VERSION
+minikube       Ready    control-plane   4m6s    v1.24.3
+minikube-m02   Ready    <none>          3m28s   v1.24.3
+minikube-m03   Ready    <none>          2m51s   v1.24.3
 ```
 
 Create the Pod and inspect the assigned node.
 
 ```
-$ kubectl get nodes
-NAME           STATUS   ROLES    AGE   VERSION
-minikube       Ready    master   43h   v1.19.2
-minikube-m02   Ready    <none>   43h   v1.19.2
-minikube-m03   Ready    <none>   43h   v1.19.2
 $ kubectl create -f pod.yaml
 pod/app created
 $ kubectl get pods -o=wide

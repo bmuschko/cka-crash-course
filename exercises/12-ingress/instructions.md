@@ -1,6 +1,6 @@
 # Exercise 12
 
-In this exercise, you will create an Ingress with a simple rule. Make sure your cluster employs an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/). On minikube, you can enable the Ingress Controller with the command `minikube addons enable ingress`.
+In this exercise, you will create an Ingress with a simple rule.
 
 > **_NOTE:_** Kubernetes requires running an Ingress Controller to evaluate Ingress rules. Make sure your cluster employs an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/). You can find installation guidance in the file [ingress-controller-setup.md](./ingress-controller-setup.md). If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda lab ["Creating an Ingress"](https://learning.oreilly.com/scenarios/cka-prep-creating/9781492099130/).
 
