@@ -13,3 +13,7 @@ minikube       Ready    control-plane   4m6s    v1.24.3
 minikube-m02   Ready    <none>          3m28s   v1.24.3
 minikube-m03   Ready    <none>          2m51s   v1.24.3
 ```
+
+## Using a Regular Kubernetes Cluster
+
+Refer to the [Kubernetes documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#join-nodes) to join a node to the cluster.
