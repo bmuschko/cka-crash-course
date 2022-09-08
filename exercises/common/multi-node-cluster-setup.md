@@ -17,3 +17,12 @@ minikube-m03   Ready    <none>          2m51s   v1.24.3
 ## Using a Regular Kubernetes Cluster
 
 Refer to the [Kubernetes documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#join-nodes) to join a node to the cluster.
+
+Verify the existing nodes with the following command. The cluster consists of a control plane node named `controlplane`, and one worker node named `node01`.
+
+```
+$ kubectl get nodes
+NAME           STATUS   ROLES                  AGE     VERSION
+controlplane   Ready    control-plane,master   5m15s   v1.23.4
+node01         Ready    <none>                 4m39s   v1.23.4
+```
