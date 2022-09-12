@@ -12,7 +12,7 @@ flowchart LR;
     ms-.->md[(mysql-db)];
 ```
 
-## Fixing the issue in namepace "network"
+## Fixing the issue in namespace "network"
 
 1. Create a new namespace named `network`.
 2. Within the namespace, setup the configuration `kubectl -n network apply -f setup.yml`.
