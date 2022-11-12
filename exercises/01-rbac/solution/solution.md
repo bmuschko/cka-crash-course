@@ -1,28 +1,14 @@
 # Solution
 
-## Creating the User
+## Checking Default User Permissions
 
-Set a user entry in `kubeconfig` for `johndoe` with the following command. Point to the CRT and key file. See the [documentation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information on the kubeconfig file.
-
-```
-$ kubectl config set-credentials johndoe --client-certificate=johndoe.crt --client-key=johndoe.key
-User "johndoe" set.
-```
-
-Set a context entry in `kubeconfig` for `johndoe`.
+Use the `johndoe` context we added to the `kubeconfig` file earlier. You can check the current context using `config current-context`.
 
 ```
-$ kubectl config set-context johndoe-context --cluster=minikube --user=johndoe
-Context "johndoe-context" created.
-```
-
-Set the `johndoe-context` context in the `kubeconfig` file. You can check the current context using `config current-context`.
-
-```
-$ kubectl config use-context johndoe-context
-Switched to context "johndoe-context".
+$ kubectl config use-context johndoe
+Switched to context "johndoe".
 $ kubectl config current-context
-johndoe-context
+johndoe
 ```
 
 Creating a Pod in the current context won't work as the user `johndoe` does have the proper permissions.
@@ -100,11 +86,11 @@ rolebinding.rbac.authorization.k8s.io/read-pods   Role/pod-reader   70s
 
 ## Verifying Permissions
 
-Switch to the context `johndoe-context`.
+Switch to the context `johndoe`.
 
 ```
-$ kubectl config use-context johndoe-context
-Switched to context "johndoe-context".
+$ kubectl config use-context johndoe
+Switched to context "johndoe".
 ```
 
 Creating a new Pod won't work as the user `johndoe` doesn't have the proper permissions.
@@ -121,7 +107,7 @@ $ kubectl get pods
 No resources found in default namespace.
 ```
 
-You can check the permissions of the `johndoe` user from the default context. As you can see, the operations `list`, `get`, and `watch` are permitted, whereas the `delete` operation is forbidden.
+You can check the permissions of the `johndoe` user from the default context. As you can see, the operations `list`, `get`, and `watch` are permitted, whereas the `create` or `delete` operations are forbidden.
 
 ```
 $ kubectl config use-context minikube
@@ -132,6 +118,8 @@ $ kubectl auth can-i get pods --as johndoe
 yes
 $ kubectl auth can-i watch pods --as johndoe
 yes
+$ kubectl auth can-i create pods --as johndoe
+no
 $ kubectl auth can-i delete pods --as johndoe
 no
 ```
