@@ -78,8 +78,8 @@ The Ingress will now render the value `localhost` in the column "ADDRESS".
 
 ```
 $ kubectl get ingress
-NAME                  CLASS   HOSTS                 ADDRESS     PORTS   AGE
-hello-world-ingress   nginx   hello-world.exposed   localhost   80      79s
+NAME                  CLASS   HOSTS                 ADDRESS         PORTS   AGE
+hello-world-ingress   nginx   hello-world.exposed   192.168.64.38   80      79s
 ```
 
 Make a `curl` call to the host name mapped by the Ingress. The call should be routed toward the backend and respond with the message "Hello World".
