@@ -74,12 +74,12 @@ Edit the file `/etc/hosts` via `sudo vim /etc/hosts`. Add the following entry to
 192.168.64.38 hello-world.exposed
 ```
 
-The Ingress will now render the value `localhost` in the column "ADDRESS".
+The Ingress will now render the value `192.168.64.38` (the node's IP address) in the column "ADDRESS".
 
 ```
 $ kubectl get ingress
-NAME                  CLASS   HOSTS                 ADDRESS     PORTS   AGE
-hello-world-ingress   nginx   hello-world.exposed   localhost   80      79s
+NAME                  CLASS   HOSTS                 ADDRESS         PORTS   AGE
+hello-world-ingress   nginx   hello-world.exposed   192.168.64.38   80      79s
 ```
 
 Make a `curl` call to the host name mapped by the Ingress. The call should be routed toward the backend and respond with the message "Hello World".
