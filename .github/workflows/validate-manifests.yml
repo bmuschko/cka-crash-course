@@ -13,5 +13,5 @@ jobs:
             wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
             tar xf kubeval-linux-amd64.tar.gz
             sudo cp kubeval /usr/local/bin
-      - name: Validate Against Kubernetes 1.24.3
-        run: kubeval -v 1.24.3 -s https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master -d . -i kustomize,helm,yq,.github/workflows
+      - name: Validate Against Kubernetes Schema
+        run: kubeval -v 1.25.4 -s https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master -d . -i kustomize,helm,yq,.github/workflows
