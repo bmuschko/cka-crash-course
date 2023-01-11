@@ -15,7 +15,7 @@ flowchart LR;
 ## Fixing the issue in namespace "network"
 
 1. Create a new namespace named `network`.
-2. Within the namespace, setup the configuration `kubectl -n network apply -f setup.yml`.
+2. Within the namespace, setup the configuration `kubectl -n network apply -f setup.yaml`.
 3. List all the objects and ensure that their status shows `Ready`.
 4. The Pod running web application exposes the container port 3000. From your machine, execute `curl` or `wget` to access the application through the Service endpoint from outside of the cluster. A successful response should render `Successfully connected to database!`, a failure response should render `Failed to connect to database: <error message>`.
 5. Add a new NetworkPolicy allowing web-app to connect to mysql-db only on port 3306.
