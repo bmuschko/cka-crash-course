@@ -28,15 +28,15 @@ kubeadm join 192.168.56.10:6443 --token fi8io0.dtkzsy9kws56dmsp \
 Should you forget about the `join` command, run the following to retrieve it.
 
 ```
-kubeadm token create --print-join-command
+$ kubeadm token create --print-join-command
 ```
 
 Next, execute the commands from the output:
 
 ```
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 It's recommended to install a Pod network add-on. We'll use Calico here. The following command applies the manifest with version 3.22.
