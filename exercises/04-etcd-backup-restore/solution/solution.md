@@ -63,8 +63,7 @@ member
 Edit the YAML manifest of the etcd Pod which can be found at `/etc/kubernetes/manifests/etcd.yaml`. Change the value of the attribute `spec.volumes.hostPath` with the name `etcd-data` from the original value `/var/lib/etcd` to `/var/lib/from-backup`.
 
 ```
-$ cd /etc/kubernetes/manifests/
-$ sudo vim etcd.yaml
+$ sudo vim /etc/kubernetes/manifests/etcd.yaml
 ...
 spec:
   volumes:
