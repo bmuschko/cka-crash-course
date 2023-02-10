@@ -14,8 +14,8 @@ chown vagrant:vagrant /home/vagrant/.kube/config
 mkdir -p /root/.kube
 cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
-kubectl create -f https://projectcalico.docs.tigera.io/manifests/tigera-operator.yaml
-wget https://projectcalico.docs.tigera.io/manifests/custom-resources.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
+wget https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml
 sed -i 's~cidr: 192\.168\.0\.0/16~cidr: 172\.18\.0\.0/16~g' custom-resources.yaml
 kubectl create -f custom-resources.yaml
 rm custom-resources.yaml
