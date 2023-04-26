@@ -8,7 +8,7 @@ The following image shows the high-level architecture.
 
 > **_NOTE:_** If you do not already have a cluster, you can create one by using minikube or you can use the Katacoda lab ["Troubleshooting a Deployment"](https://learning.oreilly.com/scenarios/cka-prep-troubleshooting/9781492099192/).
 
-## Fixing the issue in namepace "gemini"
+## Fixing the issue in namespace "gemini"
 
 1. Create a new namespace named `gemini`.
 2. Within the namespace, create the following objects in the given order from the YAML files: `gemini/mysql-pod.yaml`, `gemini/mysql-service.yaml`, `gemini/web-app-pod.yaml`, `gemini/web-app-service.yaml`.
