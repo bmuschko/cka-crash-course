@@ -1,5 +1,15 @@
 # Exercise 4
 
+<details>
+<summary><b>Quick Reference</b></summary>
+<p>
+
+* Namespace: N/A<br>
+* Documentation: [Backing up an etcd cluster](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
+
+</p>
+</details>
+
 In this exercise, you will identify the configuration of the etcd database, back it up and restore the original database from a backup file. The command line tool `etcdctl` has already been pre-installed on the control plane node.
 
 > **_NOTE:_** The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VirtualBox. If you do not want to use the Vagrant environment, you can use the Katacoda lab ["Backing up and restoring etcd"](https://learning.oreilly.com/scenarios/cka-prep-backing/9781492095521/).

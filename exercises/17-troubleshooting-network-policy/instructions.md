@@ -1,5 +1,15 @@
 # Exercise 17
 
+<details>
+<summary><b>Quick Reference</b></summary>
+<p>
+
+* Namespace: `network`<br>
+* Documentation: [Troubleshooting Applications](https://kubernetes.io/docs/tasks/debug/debug-application/)
+
+</p>
+</details>
+
 In this exercise, you will create a network policy allowing the web-app to query its database. The application stack consists of a web application implemented using node.js, and a MySQL database. The web application connects to the database upon requesting its endpoint. Web application and MySQL database run in a Pod. Both Pods have been exposed by a Service. The Service for the web application Pod is of type `NodePort`. The Service for the MySQL database is of type `ClusterIP`. By default, all ingress and egress traffic is not allowed in this namespace.
 
 The following flowchart shows the high-level architecture.

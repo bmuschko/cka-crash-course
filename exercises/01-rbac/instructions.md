@@ -1,5 +1,15 @@
 # Exercise 1
 
+<details>
+<summary><b>Quick Reference</b></summary>
+<p>
+
+* Namespace: `default`<br>
+* Documentation: [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+
+</p>
+</details>
+
 In this exercise, you will define Role Based Access Control (RBAC) to grant permissions to a specific user. The permissions should only apply to certain API resources and operations.
 
 The following image shows the high-level architecture.

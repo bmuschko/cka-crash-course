@@ -1,5 +1,15 @@
 # Exercise 9
 
+<details>
+<summary><b>Quick Reference</b></summary>
+<p>
+
+* Namespace: `default`<br>
+* Documentation: [nodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), [Node affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)
+
+</p>
+</details>
+
 In this exercise, you will schedule a Pod on a specific node. The Pod should only be scheduled on nodes with the label with the key `color` and the assigned values `green` or `red`.
 
 > **_NOTE:_** Refer to the file [multi-node-cluster-setup.md](../common/multi-node-cluster-setup.md) to configure a cluster with multiple nodes.

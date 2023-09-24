@@ -1,5 +1,15 @@
 # Exercise 10
 
+<details>
+<summary><b>Quick Reference</b></summary>
+<p>
+
+* Namespace: `default`<br>
+* Documentation: [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+
+</p>
+</details>
+
 In this exercise, you will use the concept of taints and tolerations. First, you'll create a Pod. This Pod will be scheduled on one of the nodes. Next, you will add a taint to the node the Pod is running on and set a toleration effect that evicts the Pod from the node.
 
 > **_NOTE:_** Refer to the file [multi-node-cluster-setup.md](../common/multi-node-cluster-setup.md) to configure a cluster with multiple nodes.
