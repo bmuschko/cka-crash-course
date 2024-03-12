@@ -1,5 +1,12 @@
 name: Validate Manifests
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches: 
+      - master
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
 
 jobs:
   build:
@@ -11,4 +18,4 @@ jobs:
       - name: Set up Kubeconform
         uses: bmuschko/setup-kubeconform@v1
       - name: Validate Against Kubernetes Schema
-        run: kubeconform -kubernetes-version=1.28.3 -ignore-filename-pattern=.github/workflows -ignore-filename-pattern=.json$ -ignore-filename-pattern=kustomize -ignore-filename-pattern=helm -ignore-filename-pattern=yq -summary .
+        run: kubeconform -kubernetes-version=1.29.2 -ignore-filename-pattern=.github/workflows -ignore-filename-pattern=.json$ -ignore-filename-pattern=kustomize -ignore-filename-pattern=helm -ignore-filename-pattern=yq -summary .

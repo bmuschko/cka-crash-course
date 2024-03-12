@@ -12,7 +12,8 @@
 
 In this exercise, you will schedule a Pod on a specific node. The Pod should only be scheduled on nodes with the label with the key `color` and the assigned values `green` or `red`.
 
-> **_NOTE:_** Refer to the file [multi-node-cluster-setup.md](../common/multi-node-cluster-setup.md) to configure a cluster with multiple nodes.
+> [!NOTE]
+> Refer to the file [multi-node-cluster-setup.md](../common/multi-node-cluster-setup.md) to configure a cluster with multiple nodes.
 
 1. Inspect the existing nodes and their assigned labels.
 2. Pick one available node and label it with the key-value pair `color=green`. Pick a second node and label it with the key-value pair `color=red`.
