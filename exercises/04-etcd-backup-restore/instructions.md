@@ -13,7 +13,7 @@
 In this exercise, you will identify the configuration of the etcd database, back it up and restore the original database from a backup file. The command line tool `etcdctl` has already been pre-installed on the control plane node.
 
 > [!NOTE]
-> The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VirtualBox. If you do not want to use the Vagrant environment, you can use the Katacoda lab ["Backing up and restoring etcd"](https://learning.oreilly.com/scenarios/cka-prep-backing/9781492095521/).
+> The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VirtualBox. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Backing up and restoring etcd"](https://learning.oreilly.com/scenarios/cka-prep-backing/9781492095521/).
 
 1. Shell into control plane node using the command `vagrant ssh kube-control-plane`.
 2. Check that all nodes have been correctly registered and are in the "Ready" status.
