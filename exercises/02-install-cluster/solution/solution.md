@@ -39,10 +39,13 @@ $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-It's recommended to install a Pod network add-on. We'll use Calico here. The following command applies the manifest with version 3.22.
+It's recommended to install a Pod network add-on. We'll use Calico here. The following command applies the manifest with version 3.25.
 
 ```
-$ kubectl apply -f https://projectcalico.docs.tigera.io/archive/v3.22/manifests/calico.yaml
+$ kubectl apply -f https://projectcalico.docs.tigera.io/archive/v3.25/manifests/calico.yaml
+poddisruptionbudget.policy/calico-kube-controllers created
+serviceaccount/calico-kube-controllers created
+serviceaccount/calico-node created
 configmap/calico-config created
 customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
 customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
@@ -62,23 +65,19 @@ customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.
 customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
 customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created
 clusterrole.rbac.authorization.k8s.io/calico-kube-controllers created
-clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers created
 clusterrole.rbac.authorization.k8s.io/calico-node created
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers created
 clusterrolebinding.rbac.authorization.k8s.io/calico-node created
 daemonset.apps/calico-node created
-serviceaccount/calico-node created
 deployment.apps/calico-kube-controllers created
-serviceaccount/calico-kube-controllers created
-Warning: policy/v1beta1 PodDisruptionBudget is deprecated in v1.21+, unavailable in v1.25+; use policy/v1 PodDisruptionBudget
-poddisruptionbudget.policy/calico-kube-controllers created
 ```
 
 The list of nodes should show the following output:
 
 ```
 $ kubectl get nodes
-NAME                 STATUS   ROLES                  AGE   VERSION
-kube-control-plane   Ready    control-plane,master   80s   v1.23.4
+NAME                 STATUS   ROLES           AGE   VERSION
+kube-control-plane   Ready    control-plane   56s   v1.26.1
 ```
 
 Exit the control plane node by running the `exit` command.
@@ -95,10 +94,10 @@ After applying the `join` command for both worker nodes, the list of nodes shoul
 
 ```
 $ kubectl get nodes
-NAME                  STATUS   ROLES                  AGE     VERSION
-kube-control-plane    Ready    control-plane,master   5m1s    v1.23.4
-kube-worker-1         Ready    <none>                 2m22s   v1.23.4
-kube-worker-2         Ready    <none>                 32s     v1.23.4
+NAME                 STATUS   ROLES           AGE    VERSION
+kube-control-plane   Ready    control-plane   4m1s   v1.26.1
+kube-worker-1        Ready    <none>          30s    v1.26.1
+kube-worker-2        Ready    <none>          30s    v1.26.1
 ```
 
 ## Verifying the Installation
@@ -106,7 +105,7 @@ kube-worker-2         Ready    <none>                 32s     v1.23.4
 To verify the installation, you can create a new Pod and inspect which node it is running on.
 
 ```
-$ kubectl run nginx --image=nginx
+$ kubectl run nginx --image=nginx:1.25.4-alpine
 pod/nginx created
 $ kubectl get pods
 NAME    READY   STATUS    RESTARTS   AGE
