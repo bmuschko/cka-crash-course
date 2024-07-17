@@ -77,7 +77,7 @@ The list of nodes should show the following output:
 ```
 $ kubectl get nodes
 NAME                 STATUS   ROLES           AGE   VERSION
-kube-control-plane   Ready    control-plane   56s   v1.26.1
+kube-control-plane   Ready    control-plane   56s   v1.30.2
 ```
 
 Exit the control plane node by running the `exit` command.
@@ -90,14 +90,16 @@ Shell into worker node 1 or 2 with the command `vagrant ssh kube-worker-1` or `v
 $ sudo kubeadm join 192.168.56.10:6443 --token fi8io0.dtkzsy9kws56dmsp --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
 ```
 
-After applying the `join` command for both worker nodes, the list of nodes should render the following output. The command needs to be run on the control plane node.
+## Checking the Cluster
+
+After applying the `join` command for both worker nodes, the list of nodes should render the following output from the control plane node. The command needs to be run on the control plane node.
 
 ```
 $ kubectl get nodes
 NAME                 STATUS   ROLES           AGE    VERSION
-kube-control-plane   Ready    control-plane   4m1s   v1.26.1
-kube-worker-1        Ready    <none>          30s    v1.26.1
-kube-worker-2        Ready    <none>          30s    v1.26.1
+kube-control-plane   Ready    control-plane   4m1s   v1.30.2
+kube-worker-1        Ready    <none>          30s    v1.30.2
+kube-worker-2        Ready    <none>          30s    v1.30.2
 ```
 
 ## Verifying the Installation

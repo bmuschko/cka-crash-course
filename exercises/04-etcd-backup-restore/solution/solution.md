@@ -10,9 +10,9 @@ $ kubectl describe pod etcd-kube-control-plane -n kube-system
 ...
 Containers:
   etcd:
-    Container ID:  containerd://b31edb4d62cb7b1744387efbcdcc8c9a47367e4a1bd92a57401ced8afd5c2719
-    Image:         registry.k8s.io/etcd:3.5.6-0
-    Image ID:      registry.k8s.io/etcd@sha256:dd75ec974b0a2a6f6bb47001ba09207976e625db898d1b16735528c009cb171c
+    Container ID:  containerd://98e543d4ebfd2e8621ed50adfee6c260483e808362a300bee03197552cbf98e0
+    Image:         registry.k8s.io/etcd:3.5.12-0
+    Image ID:      registry.k8s.io/etcd@sha256:44a8e24dcbba3470ee1fee21d5e88d128c936e9b55d4bc51fbef8086f8ed123b
 ...
 ```
 
