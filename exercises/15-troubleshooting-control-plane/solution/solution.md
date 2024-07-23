@@ -52,7 +52,7 @@ I0121 21:44:46.227895       1 serving.go:331] Generated self-signed cert in-memo
 failed to get delegated authentication kubeconfig: failed to get delegated authentication kubeconfig: stat /etc/kubernetes/scheduler-authentication.conf: no such file or directory
 ```
 
-Check the file `/etc/kubernetes/scheduler-authentication.conf`. It does exist but there's a file which sounds right: `/etc/kubernetes/scheduler.conf`. Let's point to it by changing the configuration of the scheduler in `/etc/kubernetes/manifests/kube-scheduler.yaml`. Change the value of the command line option `--authentication-kubeconfig`.
+Check the file `/etc/kubernetes/scheduler-authentication.conf`. It does exist but there's a file which points to a file that doesn't exist: `/etc/kubernetes/scheduler.conf`. Let's point to it by changing the configuration of the scheduler in `/etc/kubernetes/manifests/kube-scheduler.yaml`. Change the value of the command line option `--authentication-kubeconfig`.
 
 ```
 $ ls /etc/kubernetes/scheduler-authentication.conf
