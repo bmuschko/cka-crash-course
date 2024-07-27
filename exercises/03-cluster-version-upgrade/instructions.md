@@ -13,7 +13,7 @@
 In this exercise, you will learn how to upgrade the cluster version from 1.29.0 to 1.29.6 using kubeadm. The cluster will contain of a single control plane node named `kube-control-plane`, and one worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
 
 > [!NOTE]
-> The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VirtualBox. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Upgrading a cluster version"](https://learning.oreilly.com/interactive-lab/cka-prep-installing/9781492095507/).
+> The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VirtualBox. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Upgrading a cluster version"](https://learning.oreilly.com/interactive-lab/cka-prep-upgrading/9781492095514).
 
 ## Upgrading the Control Plane Node
 
