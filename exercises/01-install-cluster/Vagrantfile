@@ -1,4 +1,4 @@
-BOX_IMAGE = "ubuntu/bionic64"
+BOX_IMAGE = "ubuntu/jammy64"
 WORKER_COUNT = 2
 
 Vagrant.configure("2") do |config|

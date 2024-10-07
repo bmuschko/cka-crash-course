@@ -1,4 +1,4 @@
-BOX_IMAGE = "ubuntu/bionic64"
+BOX_IMAGE = "ubuntu/jammy64"
 WORKER_COUNT = 1
 POD_CIDR = "172.18.0.0/16"
 API_ADV_ADDRESS = "192.168.56.10"
