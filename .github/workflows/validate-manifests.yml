@@ -11,11 +11,11 @@ on:
 jobs:
   build:
     name: Validate Manifests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Kubeconform
         uses: bmuschko/setup-kubeconform@v1
       - name: Validate Against Kubernetes Schema
-        run: kubeconform -kubernetes-version=1.30.2 -ignore-filename-pattern=.github/workflows -ignore-filename-pattern=.json$ -ignore-filename-pattern=kustomize -ignore-filename-pattern=helm -ignore-filename-pattern=yq -summary .
+        run: kubeconform -kubernetes-version=1.30.5 -ignore-filename-pattern=.github/workflows -ignore-filename-pattern=.json$ -ignore-filename-pattern=kustomize -ignore-filename-pattern=helm -ignore-filename-pattern=yq -summary .
