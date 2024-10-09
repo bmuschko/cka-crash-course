@@ -1,5 +1,7 @@
 # Setting up the Envoy Gateway Implementation
 
+## Installing the Gateway API CRDs
+
 The Gateway API CRDs do not ship with a Kubernetes cluster. You will have to install them yourself. Run the following command to install the stable release of the CRDs. See the [installation instructions](https://gateway-api.sigs.k8s.io/guides/#installing-gateway-api) for more information.
 
 ```
@@ -22,6 +24,8 @@ grpcroutes.gateway.networking.k8s.io        2024-10-05T15:28:20Z
 httproutes.gateway.networking.k8s.io        2024-10-05T15:28:20Z
 referencegrants.gateway.networking.k8s.io   2024-10-05T15:28:21Z
 ```
+
+## Installing Envoy Gateway
 
 You will have to [install a Gateway implementation](https://gateway-api.sigs.k8s.io/implementations/) in addition to the Gateway API CRDs. We'll use [Envoy Gateway](https://gateway-api.sigs.k8s.io/implementations/#envoy-gateway) for this example.
 
