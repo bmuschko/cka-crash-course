@@ -5,7 +5,7 @@
 <p>
 
 * Namespace: `default`<br>
-* Documentation: [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+* Documentation: [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
 
 </p>
 </details>
