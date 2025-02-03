@@ -4,10 +4,16 @@ You can find a full description of the [installation steps](https://kubernetes.i
 
 ## Initializing the Control Plane Node
 
-After shelling into the control plane node with `vagrant ssh kube-control-plane`, run the `kubeadm init` command as root user. This initializes the control plane node. The output contains follow up command you will keep track of.
+Open an interactive shell to the control plane node.
 
 ```
-$ sudo kubeadm init --pod-network-cidr 172.18.0.0/16 --apiserver-advertise-address 192.168.56.10
+$ vagrant ssh kube-control-plane
+```
+
+Run the `kubeadm init` command as root user. This initializes the control plane node. The output contains follow up command you will keep track of.
+
+```
+$ sudo kubeadm init --pod-network-cidr 172.18.0.0/16
 ...
 To start using your cluster, you need to run the following as a regular user:
 
@@ -21,8 +27,8 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.56.10:6443 --token fi8io0.dtkzsy9kws56dmsp \
-    --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
+kubeadm join 192.168.2.167:6443 --token bwpn4g.g8duvvhgw0aqneh0 \
+	--discovery-token-ca-cert-hash sha256:b8cf484cea5b05eb9415b3ec6d36f5586330d2f62f332ee9d3336a2a4dabd13b
 ```
 
 Should you forget about the `join` command, run the following to retrieve it.
@@ -76,18 +82,24 @@ The list of nodes should show the following output:
 
 ```
 $ kubectl get nodes
-NAME                 STATUS   ROLES           AGE   VERSION
-kube-control-plane   Ready    control-plane   56s   v1.30.2
+NAME                 STATUS   ROLES           AGE     VERSION
+kube-control-plane   Ready    control-plane   2m34s   v1.31.1
 ```
 
 Exit the control plane node by running the `exit` command.
 
 ## Joining the Worker Nodes
 
-Shell into worker node 1 or 2 with the command `vagrant ssh kube-worker-1` or `vagrant ssh kube-worker-2`, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command showns an example. Remember that the token and SHA256 hash will be different for you.
+Open an interactive shell to the worker node.
 
 ```
-$ sudo kubeadm join 192.168.56.10:6443 --token fi8io0.dtkzsy9kws56dmsp --discovery-token-ca-cert-hash sha256:cc89ea1f82d5ec460e21b69476e0c052d691d0c52cce83fbd7e403559c1ebdac
+$ vagrant ssh ssh kube-worker-1
+```
+
+Shell into worker node 1 with the command `vagrant ssh kube-worker-1`, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command showns an example. Remember that the token and SHA256 hash will be different for you.
+
+```
+$ sudo kubeadm join 192.168.2.167:6443 --token bibmd6.h4zrig0d7zdr1k87 --discovery-token-ca-cert-hash sha256:b8cf484cea5b05eb9415b3ec6d36f5586330d2f62f332ee9d3336a2a4dabd13b
 ```
 
 ## Checking the Cluster
@@ -96,10 +108,9 @@ After applying the `join` command for both worker nodes, the list of nodes shoul
 
 ```
 $ kubectl get nodes
-NAME                 STATUS   ROLES           AGE    VERSION
-kube-control-plane   Ready    control-plane   4m1s   v1.30.2
-kube-worker-1        Ready    <none>          30s    v1.30.2
-kube-worker-2        Ready    <none>          30s    v1.30.2
+NAME                 STATUS   ROLES           AGE     VERSION
+kube-control-plane   Ready    control-plane   4m27s   v1.31.1
+kube-worker-1        Ready    <none>          48s     v1.31.1
 ```
 
 ## Verifying the Installation
@@ -113,5 +124,5 @@ $ kubectl get pods
 NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          9s
 $ kubectl describe pod nginx | grep Node:
-Node:         kube-worker-1/10.0.2.15
+Node:             kube-worker-1/192.168.2.168
 ```

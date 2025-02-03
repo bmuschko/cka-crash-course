@@ -1,6 +1,6 @@
 # Solution
 
-Shell into the control plane node with the following command.
+Open an interactive shell to the control plane node.
 
 ```
 $ vagrant ssh kube-control-plane
@@ -10,9 +10,9 @@ Have a look at the status of the nodes. The worker node has an issue indicated b
 
 ```
 $ kubectl get nodes
-NAME                 STATUS     ROLES           AGE   VERSION
-kube-control-plane   Ready      control-plane   21m   v1.26.14
-kube-worker-1        NotReady   <none>          19m   v1.26.14
+NAME                 STATUS      ROLES           AGE     VERSION
+kube-control-plane   Ready       control-plane   4m27s   v1.31.1
+kube-worker-1        NotReady    <none>          48s     v1.31.1
 ```
 
 The events of the worker node to not expose any apparent issues.
@@ -30,10 +30,15 @@ Events:
   Normal  NodeAllocatableEnforced  4m15s                  kubelet  Updated Node Allocatable limit across pods
 ```
 
-Exit the control plane node and shell into the worker node.
+Exit the control plane node.
 
 ```
 $ exit
+```
+
+Open an interactive shell to the worker node.
+
+```
 $ vagrant ssh kube-worker-1
 ```
 
@@ -90,7 +95,7 @@ After waiting a couple of seconds, the worker node should transition into the "R
 
 ```
 $ kubectl get nodes
-NAME                 STATUS   ROLES           AGE   VERSION
-kube-control-plane   Ready    control-plane   21m   v1.26.14
-kube-worker-1        Ready    <none>          19m   v1.26.14
+NAME                 STATUS   ROLES           AGE     VERSION
+kube-control-plane   Ready    control-plane   4m27s   v1.31.1
+kube-worker-1        Ready    <none>          48s     v1.31.1
 ```

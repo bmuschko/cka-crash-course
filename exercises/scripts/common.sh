@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z ${K8S_VERSION+x} ]; then
-  K8S_VERSION=1.26.1-1.1
+  K8S_VERSION=1.31.1-1.1
 fi
 
 # Install containerd container runtime
@@ -23,9 +23,22 @@ sudo systemctl status containerd
 sudo mv etc/containerd/config.toml etc/containerd/config.toml.orig
 containerd config default | sudo tee /etc/containerd/config.toml
 sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
-wget https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-amd64-v1.1.1.tgz
+
+ARCH=$(uname -m)
+if [ "$ARCH" == "x86_64" ]; then
+    ARCH="amd64"
+elif [ "$ARCH" == "aarch64" ]; then
+    ARCH="arm64"
+elif [ "$ARCH" == "armv7l" ]; then
+    ARCH="arm"
+else
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+fi
+
+wget "https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-${ARCH}-v1.1.1.tgz"
 mkdir -p /opt/cni/bin
-tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.1.1.tgz
+tar Cxzvf /opt/cni/bin "cni-plugins-linux-${ARCH}-v1.1.1.tgz"
 sudo systemctl restart containerd
 
 sudo apt-get update
@@ -44,6 +57,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # Required for kubeadm preinstall checks
 modprobe br_netfilter
 echo '1' > /proc/sys/net/ipv4/ip_forward
+sudo apt-get -y install socat
 
 # Set alias for kubectl command
 echo "alias k=kubectl" >> /home/vagrant/.bashrc

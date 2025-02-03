@@ -1,13 +1,21 @@
 # Interacting with a Vagrant Kubernetes Cluster
 
-You will need to install the tools Vagrant and VirtualBox to set up a Virtual Machine (VM) cluster with Kubernetes set up on it. For more information, see the [prerequisites](../../prerequisites/instructions.md).
+You will need to install the tools Vagrant and VMware to set up a Virtual Machine (VM) cluster with Kubernetes set up on it. For more information, see the [prerequisites](../../prerequisites/instructions.md).
 
 ## Starting up the Cluster
 
 Start the VMs using the command `vagrant up`. Depending on the hardware and network connectivity of your machine, this process may take a couple of minutes.
 
+Run in the following command to use the VMware Fusion provider (MacOSX):
+
 ```
-$ vagrant up
+$ vagrant up --provider vmware_fusion
+```
+
+Run in the following command to use the VMware Workstation provider (Windows):
+
+```
+$ vagrant up --provider vmware_desktop
 ```
 
 ## Shelling into a VM

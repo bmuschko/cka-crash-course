@@ -4,144 +4,128 @@ You can find a detailed description of the upgrade steps in the [offical Kuberne
 
 ## Upgrading the Control Plane Node
 
-Shell into the control plane node.
+Open an interactive shell to the control plane node.
 
 ```
 $ vagrant ssh kube-control-plane
 ```
 
-First, check the nodes and their Kubernetes versions. You will see that all nodes run on version 1.29.0.
+First, check the nodes and their Kubernetes versions. You will see that all nodes run on version 1.31.1.
 
 ```
 $ kubectl get nodes
-NAME                 STATUS   ROLES           AGE     VERSION
-kube-control-plane   Ready    control-plane   3m59s   v1.29.0
-kube-worker-1        Ready    <none>          2m16s   v1.29.0
+NAME                 STATUS   ROLES           AGE    VERSION
+kube-control-plane   Ready    control-plane   4m3s   v1.31.1
+kube-worker-1        Ready    <none>          72s    v1.31.1
 ```
 
-Install the kubeadm version 1.29.6-1.1 and check its version.
+Install the kubeadm version 1.31.5-1.1 and check its version.
 
 ```
-$ sudo apt-mark unhold kubeadm && sudo apt-get update && sudo apt-get install -y kubeadm=1.29.6-1.1 && sudo apt-mark hold kubeadm
+$ sudo apt-mark unhold kubeadm && sudo apt-get update && sudo apt-get install -y kubeadm=1.31.5-1.1 && sudo apt-mark hold kubeadm
 Canceled hold on kubeadm.
-Hit:1 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
-Hit:5 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  InRelease
+Hit:1 https://download.docker.com/linux/ubuntu oracular InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports oracular InRelease
+Hit:4 http://deb.gierens.de stable InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports oracular-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports oracular-backports InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports oracular-security InRelease
+Hit:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease
 Reading package lists... Done
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
 The following packages will be upgraded:
   kubeadm
-1 upgraded, 0 newly installed, 0 to remove and 15 not upgraded.
-Need to get 10.1 MB of archives.
-After this operation, 123 kB of additional disk space will be used.
-Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  kubeadm 1.29.6-1.1 [10.1 MB]
-Fetched 10.1 MB in 1s (19.5 MB/s)
-(Reading database ... 60457 files and directories currently installed.)
-Preparing to unpack .../kubeadm_1.29.6-1.1_amd64.deb ...
-Unpacking kubeadm (1.29.6-1.1) over (1.29.0-1.1) ...
-Setting up kubeadm (1.29.6-1.1) ...
+1 upgraded, 0 newly installed, 0 to remove and 94 not upgraded.
+Need to get 9,810 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  kubeadm 1.31.5-1.1 [9,810 kB]
+Fetched 9,810 kB in 21s (473 kB/s)
+(Reading database ... 56358 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.31.5-1.1_arm64.deb ...
+Unpacking kubeadm (1.31.5-1.1) over (1.31.1-1.1) ...
+Setting up kubeadm (1.31.5-1.1) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
 kubeadm set on hold.
 
-$ sudo apt-get update && sudo apt-get install -y --allow-change-held-packages kubeadm=1.29.6-1.1
-Hit:2 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+$ sudo apt-get update && sudo apt-get install -y --allow-change-held-packages kubeadm=1.31.5-1.1
+Hit:1 https://download.docker.com/linux/ubuntu oracular InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports oracular InRelease
+Hit:4 http://deb.gierens.de stable InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports oracular-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports oracular-backports InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports oracular-security InRelease
+Hit:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease
 Reading package lists... Done
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
-kubeadm is already the newest version (1.29.6-1.1).
-0 upgraded, 0 newly installed, 0 to remove and 15 not upgraded.
+kubeadm is already the newest version (1.31.5-1.1).
+0 upgraded, 0 newly installed, 0 to remove and 94 not upgraded.
 
 $ kubeadm version
-kubeadm version: &version.Info{Major:"1", Minor:"29", GitVersion:"v1.29.6", GitCommit:"062798d53d83265b9e05f14d85198f74362adaca", GitTreeState:"clean", BuildDate:"2024-06-11T20:22:13Z", GoVersion:"go1.21.11", Compiler:"gc", Platform:"linux/amd64"}
+kubeadm version: &version.Info{Major:"1", Minor:"31", GitVersion:"v1.31.5", GitCommit:"af64d838aacd9173317b39cf273741816bd82377", GitTreeState:"clean", BuildDate:"2025-01-15T14:39:21Z", GoVersion:"go1.22.10", Compiler:"gc", Platform:"linux/arm64"}
 ```
 
 Check the available versions.
 
 ```
 $ sudo kubeadm upgrade plan
-[upgrade/config] Making sure the configuration is correct:
+[preflight] Running pre-flight checks.
 [upgrade/config] Reading configuration from the cluster...
 [upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-[preflight] Running pre-flight checks.
 [upgrade] Running cluster health checks
 [upgrade] Fetching available versions to upgrade to
-[upgrade/versions] Cluster version: v1.29.7
-[upgrade/versions] kubeadm version: v1.29.6
-I0717 20:59:52.359800   11176 version.go:256] remote version is much newer: v1.30.3; falling back to: stable-1.29
-[upgrade/versions] Target version: v1.29.7
-[upgrade/versions] Latest version in the v1.29 series: v1.29.7
+[upgrade/versions] Cluster version: 1.31.5
+[upgrade/versions] kubeadm version: v1.31.5
+I0130 18:22:47.687526    9393 version.go:261] remote version is much newer: v1.32.1; falling back to: stable-1.31
+[upgrade/versions] Target version: v1.31.5
+[upgrade/versions] Latest version in the v1.31 series: v1.31.5
 ```
 
 Apply the upgrade.
 
 ```
-$ sudo kubeadm upgrade apply v1.29.6
-[upgrade/config] Making sure the configuration is correct:
+$ sudo kubeadm upgrade apply v1.31.5
+[preflight] Running pre-flight checks.
 [upgrade/config] Reading configuration from the cluster...
 [upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-[preflight] Running pre-flight checks.
 [upgrade] Running cluster health checks
-[upgrade/version] You have chosen to change the cluster version to "v1.29.6"
-[upgrade/versions] Cluster version: v1.29.7
-[upgrade/versions] kubeadm version: v1.29.6
+[upgrade/version] You have chosen to change the cluster version to "v1.31.5"
+[upgrade/versions] Cluster version: v1.31.5
+[upgrade/versions] kubeadm version: v1.31.5
 [upgrade] Are you sure you want to proceed? [y/N]: y
 [upgrade/prepull] Pulling images required for setting up a Kubernetes cluster
 [upgrade/prepull] This might take a minute or two, depending on the speed of your internet connection
-[upgrade/prepull] You can also perform this action in beforehand using 'kubeadm config images pull'
-W0717 21:00:39.094067   11300 checks.go:835] detected that the sandbox image "registry.k8s.io/pause:3.6" of the container runtime is inconsistent with that used by kubeadm. It is recommended that using "registry.k8s.io/pause:3.9" as the CRI sandbox image.
-[upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.29.6" (timeout: 5m0s)...
-[upgrade/etcd] Upgrading to TLS for etcd
+[upgrade/prepull] You can also perform this action beforehand using 'kubeadm config images pull'
+W0130 18:23:28.987632    9467 checks.go:846] detected that the sandbox image "registry.k8s.io/pause:3.8" of the container runtime is inconsistent with that used by kubeadm.It is recommended to use "registry.k8s.io/pause:3.10" as the CRI sandbox image.
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.31.5" (timeout: 5m0s)...
+[upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests2848669133"
 [upgrade/staticpods] Preparing for "etcd" upgrade
-[upgrade/staticpods] Renewing etcd-server certificate
-[upgrade/staticpods] Renewing etcd-peer certificate
-[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
-[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2024-07-17-21-00-44/etcd.yaml"
-[upgrade/staticpods] Waiting for the kubelet to restart the component
-[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-[apiclient] Found 1 Pods for label selector component=etcd
-[upgrade/staticpods] Component "etcd" upgraded successfully!
+[upgrade/staticpods] Current and new manifests of etcd are equal, skipping upgrade
 [upgrade/etcd] Waiting for etcd to become available
-[upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests4119284592"
 [upgrade/staticpods] Preparing for "kube-apiserver" upgrade
-[upgrade/staticpods] Renewing apiserver certificate
-[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
-[upgrade/staticpods] Renewing front-proxy-client certificate
-[upgrade/staticpods] Renewing apiserver-etcd-client certificate
-[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2024-07-17-21-00-44/kube-apiserver.yaml"
-[upgrade/staticpods] Waiting for the kubelet to restart the component
-[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-[apiclient] Found 1 Pods for label selector component=kube-apiserver
-[upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
+[upgrade/staticpods] Current and new manifests of kube-apiserver are equal, skipping upgrade
 [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade
-[upgrade/staticpods] Renewing controller-manager.conf certificate
-[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2024-07-17-21-00-44/kube-controller-manager.yaml"
-[upgrade/staticpods] Waiting for the kubelet to restart the component
-[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-[apiclient] Found 1 Pods for label selector component=kube-controller-manager
-[upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
+[upgrade/staticpods] Current and new manifests of kube-controller-manager are equal, skipping upgrade
 [upgrade/staticpods] Preparing for "kube-scheduler" upgrade
-[upgrade/staticpods] Renewing scheduler.conf certificate
-[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2024-07-17-21-00-44/kube-scheduler.yaml"
-[upgrade/staticpods] Waiting for the kubelet to restart the component
-[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
-[apiclient] Found 1 Pods for label selector component=kube-scheduler
-[upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
+[upgrade/staticpods] Current and new manifests of kube-scheduler are equal, skipping upgrade
 [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
 [kubelet] Creating a ConfigMap "kubelet-config" in namespace kube-system with the configuration for the kubelets in the cluster
-[upgrade] Backing up kubelet config file to /etc/kubernetes/tmp/kubeadm-kubelet-config4248161208/config.yaml
+[upgrade] Backing up kubelet config file to /etc/kubernetes/tmp/kubeadm-kubelet-config3138185094/config.yaml
 [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
-[kubeconfig] Writing "admin.conf" kubeconfig file
-[kubeconfig] Writing "super-admin.conf" kubeconfig file
 [bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to get nodes
 [bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
 [bootstrap-token] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
@@ -149,7 +133,7 @@ W0717 21:00:39.094067   11300 checks.go:835] detected that the sandbox image "re
 [addons] Applied essential addon: CoreDNS
 [addons] Applied essential addon: kube-proxy
 
-[upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.29.6". Enjoy!
+[upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.31.5". Enjoy!
 
 [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven't already done so.
 ```
@@ -180,47 +164,49 @@ node/kube-control-plane drained
 Upgrade kubelet and kubectl.
 
 ```
-$ sudo apt-mark unhold kubelet kubectl && sudo apt-get update && sudo apt-get install -y kubelet=1.29.6-1.1 kubectl=1.29.6-1.1 && sudo apt-mark hold kubelet kubectl
+$ sudo apt-mark unhold kubelet kubectl && sudo apt-get update && sudo apt-get install -y kubelet=1.31.5-1.1 kubectl=1.31.5-1.1 && sudo apt-mark hold kubelet kubectl
 Canceled hold on kubelet.
 Canceled hold on kubectl.
-Hit:2 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+Hit:2 https://download.docker.com/linux/ubuntu oracular InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports oracular InRelease
+Hit:4 http://deb.gierens.de stable InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports oracular-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports oracular-backports InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports oracular-security InRelease
+Hit:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease
 Reading package lists... Done
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
 The following packages will be upgraded:
   kubectl kubelet
-2 upgraded, 0 newly installed, 0 to remove and 14 not upgraded.
-Need to get 30.4 MB of archives.
-After this operation, 250 kB of additional disk space will be used.
-Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  kubectl 1.29.6-1.1 [10.5 MB]
-Get:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  kubelet 1.29.6-1.1 [19.8 MB]
-Fetched 30.4 MB in 1s (25.5 MB/s)
-(Reading database ... 60457 files and directories currently installed.)
-Preparing to unpack .../kubectl_1.29.6-1.1_amd64.deb ...
-Unpacking kubectl (1.29.6-1.1) over (1.29.0-1.1) ...
-Preparing to unpack .../kubelet_1.29.6-1.1_amd64.deb ...
-Unpacking kubelet (1.29.6-1.1) over (1.29.0-1.1) ...
-dpkg: warning: unable to delete old directory '/etc/sysconfig': Directory not empty
-Setting up kubelet (1.29.6-1.1) ...
+2 upgraded, 0 newly installed, 0 to remove and 92 not upgraded.
+Need to get 22.6 MB of archives.
+After this operation, 41.0 kB of additional disk space will be used.
+Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  kubectl 1.31.5-1.1 [9,636 kB]
+Get:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  kubelet 1.31.5-1.1 [13.0 MB]
+Fetched 22.6 MB in 21s (1,067 kB/s)
+(Reading database ... 56358 files and directories currently installed.)
+Preparing to unpack .../kubectl_1.31.5-1.1_arm64.deb ...
+Unpacking kubectl (1.31.5-1.1) over (1.31.1-1.1) ...
+Preparing to unpack .../kubelet_1.31.5-1.1_arm64.deb ...
+Unpacking kubelet (1.31.5-1.1) over (1.31.1-1.1) ...
+Setting up kubectl (1.31.5-1.1) ...
+Setting up kubelet (1.31.5-1.1) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
 
-Configuration file '/etc/default/kubelet'
- ==> File on system created by you or by a script.
- ==> File also in package provided by package maintainer.
-   What would you like to do about it ?  Your options are:
-    Y or I  : install the package maintainer's version
-    N or O  : keep your currently-installed version
-      D     : show the differences between the versions
-      Z     : start a shell to examine the situation
- The default action is to keep your current version.
-*** kubelet (Y/I/N/O/D/Z) [default=N] ? Y
-Installing new version of config file /etc/default/kubelet ...
-Setting up kubectl (1.29.6-1.1) ...
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ systemctl restart kubelet.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
 kubelet set on hold.
 kubectl set on hold.
 ```
@@ -239,13 +225,13 @@ $ kubectl uncordon kube-control-plane
 node/kube-control-plane uncordoned
 ```
 
-The control plane node should now show the usage of Kubernetes 1.29.6.
+The control plane node should now show the usage of Kubernetes 1.31.5.
 
 ```
 $ kubectl get nodes
 NAME                 STATUS   ROLES           AGE     VERSION
-kube-control-plane   Ready    control-plane   10m     v1.29.6
-kube-worker-1        Ready    <none>          9m10s   v1.29.0
+kube-control-plane   Ready    control-plane   8m58s   v1.31.5
+kube-worker-1        Ready    <none>          6m8s    v1.31.1
 ```
 
 Exit the control plane node.
@@ -256,38 +242,66 @@ $ exit
 
 ## Upgrading the Worker Node
 
-Shell into the worker node.
+Open an interactive shell to the worker node.
 
 ```
 $ vagrant ssh kube-worker-1
 ```
 
-Upgrade kubeadm to version 1.29.6-1.1.
+Upgrade kubeadm to version 1.31.5-1.1.
 
 ```
-$ sudo apt-mark unhold kubeadm && sudo apt-get update && sudo apt-get install -y kubeadm=1.29.6-1.1 && sudo apt-mark hold kubeadm
+$ sudo apt-mark unhold kubeadm && sudo apt-get update && sudo apt-get install -y kubeadm=1.31.5-1.1 && sudo apt-mark hold kubeadm
 Canceled hold on kubeadm.
-Hit:2 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  InRelease
-Hit:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+Hit:2 https://download.docker.com/linux/ubuntu oracular InRelease
+Hit:3 http://deb.gierens.de stable InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports oracular InRelease
+Get:5 http://ports.ubuntu.com/ubuntu-ports oracular-updates InRelease [126 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports oracular-backports InRelease [126 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports oracular-security InRelease [126 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports oracular-updates/main arm64 Packages [259 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports oracular-updates/main arm64 Components [32.3 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports oracular-updates/restricted arm64 Components [216 B]
+Get:11 http://ports.ubuntu.com/ubuntu-ports oracular-updates/universe arm64 Packages [154 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports oracular-updates/universe arm64 Components [53.2 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports oracular-updates/multiverse arm64 Components [212 B]
+Get:14 http://ports.ubuntu.com/ubuntu-ports oracular-backports/main arm64 Components [212 B]
+Get:15 http://ports.ubuntu.com/ubuntu-ports oracular-backports/restricted arm64 Components [216 B]
+Get:16 http://ports.ubuntu.com/ubuntu-ports oracular-backports/universe arm64 Components [9,700 B]
+Get:17 http://ports.ubuntu.com/ubuntu-ports oracular-backports/multiverse arm64 Components [216 B]
+Get:18 http://ports.ubuntu.com/ubuntu-ports oracular-security/main arm64 Components [5,672 B]
+Get:19 http://ports.ubuntu.com/ubuntu-ports oracular-security/restricted arm64 Components [212 B]
+Get:20 http://ports.ubuntu.com/ubuntu-ports oracular-security/universe arm64 Components [5,184 B]
+Get:21 http://ports.ubuntu.com/ubuntu-ports oracular-security/multiverse arm64 Components [212 B]
+Hit:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease
+Fetched 899 kB in 20s (44.1 kB/s)
 Reading package lists... Done
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
 The following packages will be upgraded:
   kubeadm
-1 upgraded, 0 newly installed, 0 to remove and 15 not upgraded.
-Need to get 10.1 MB of archives.
-After this operation, 123 kB of additional disk space will be used.
-Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  kubeadm 1.29.6-1.1 [10.1 MB]
-Fetched 10.1 MB in 1s (12.3 MB/s)
-(Reading database ... 60457 files and directories currently installed.)
-Preparing to unpack .../kubeadm_1.29.6-1.1_amd64.deb ...
-Unpacking kubeadm (1.29.6-1.1) over (1.29.0-1.1) ...
-Setting up kubeadm (1.29.6-1.1) ...
+1 upgraded, 0 newly installed, 0 to remove and 94 not upgraded.
+Need to get 9,810 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  kubeadm 1.31.5-1.1 [9,810 kB]
+Fetched 9,810 kB in 21s (471 kB/s)
+(Reading database ... 56358 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.31.5-1.1_arm64.deb ...
+Unpacking kubeadm (1.31.5-1.1) over (1.31.1-1.1) ...
+Setting up kubeadm (1.31.5-1.1) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
 kubeadm set on hold.
 ```
 
@@ -300,6 +314,8 @@ $ sudo kubeadm upgrade node
 [preflight] Running pre-flight checks
 [preflight] Skipping prepull. Not a control plane node.
 [upgrade] Skipping phase. Not a control plane node.
+[upgrade] Skipping phase. Not a control plane node.
+[upgrade] Backing up kubelet config file to /etc/kubernetes/tmp/kubeadm-kubelet-config2589728848/config.yaml
 [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
 [upgrade] The configuration for this node was successfully updated!
 [upgrade] Now you should go ahead and upgrade the kubelet package using your package manager.
@@ -332,47 +348,49 @@ node/kube-worker-1 drained
 Upgrade kubelet and kubectl.
 
 ```
-$ sudo apt-mark unhold kubelet kubectl && sudo apt-get update && sudo apt-get install -y kubelet=1.29.6-1.1 kubectl=1.29.6-1.1 && sudo apt-mark hold kubelet kubectl
+$ sudo apt-mark unhold kubelet kubectl && sudo apt-get update && sudo apt-get install -y kubelet=1.31.5-1.1 kubectl=1.31.5-1.1 && sudo apt-mark hold kubelet kubectl
 Canceled hold on kubelet.
 Canceled hold on kubectl.
-Hit:1 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:4 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  InRelease
-Hit:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+Hit:1 https://download.docker.com/linux/ubuntu oracular InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports oracular InRelease
+Hit:4 http://deb.gierens.de stable InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports oracular-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports oracular-backports InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports oracular-security InRelease
+Hit:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease
 Reading package lists... Done
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
 The following packages will be upgraded:
   kubectl kubelet
-2 upgraded, 0 newly installed, 0 to remove and 14 not upgraded.
-Need to get 30.4 MB of archives.
-After this operation, 250 kB of additional disk space will be used.
-Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  kubectl 1.29.6-1.1 [10.5 MB]
-Get:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.29/deb  kubelet 1.29.6-1.1 [19.8 MB]
-Fetched 30.4 MB in 1s (22.9 MB/s)
-(Reading database ... 60457 files and directories currently installed.)
-Preparing to unpack .../kubectl_1.29.6-1.1_amd64.deb ...
-Unpacking kubectl (1.29.6-1.1) over (1.29.0-1.1) ...
-Preparing to unpack .../kubelet_1.29.6-1.1_amd64.deb ...
-Unpacking kubelet (1.29.6-1.1) over (1.29.0-1.1) ...
-dpkg: warning: unable to delete old directory '/etc/sysconfig': Directory not empty
-Setting up kubelet (1.29.6-1.1) ...
+2 upgraded, 0 newly installed, 0 to remove and 92 not upgraded.
+Need to get 22.6 MB of archives.
+After this operation, 41.0 kB of additional disk space will be used.
+Get:1 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  kubectl 1.31.5-1.1 [9,636 kB]
+Get:2 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  kubelet 1.31.5-1.1 [13.0 MB]
+Fetched 22.6 MB in 21s (1,083 kB/s)
+(Reading database ... 56358 files and directories currently installed.)
+Preparing to unpack .../kubectl_1.31.5-1.1_arm64.deb ...
+Unpacking kubectl (1.31.5-1.1) over (1.31.1-1.1) ...
+Preparing to unpack .../kubelet_1.31.5-1.1_arm64.deb ...
+Unpacking kubelet (1.31.5-1.1) over (1.31.1-1.1) ...
+Setting up kubectl (1.31.5-1.1) ...
+Setting up kubelet (1.31.5-1.1) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
 
-Configuration file '/etc/default/kubelet'
- ==> File on system created by you or by a script.
- ==> File also in package provided by package maintainer.
-   What would you like to do about it ?  Your options are:
-    Y or I  : install the package maintainer's version
-    N or O  : keep your currently-installed version
-      D     : show the differences between the versions
-      Z     : start a shell to examine the situation
- The default action is to keep your current version.
-*** kubelet (Y/I/N/O/D/Z) [default=N] ? Y
-Installing new version of config file /etc/default/kubelet ...
-Setting up kubectl (1.29.6-1.1) ...
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ systemctl restart kubelet.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
 kubelet set on hold.
 kubectl set on hold.
 ```
@@ -391,13 +409,13 @@ $ kubectl uncordon kube-worker-1
 node/kube-worker-1 uncordoned
 ```
 
-Listing the nodes should now show version 1.29.6 for the worker node.
+Listing the nodes should now show version 1.31.5 for the worker node.
 
 ```
 $ kubectl get nodes
-NAME                 STATUS     ROLES           AGE   VERSION
-kube-control-plane   Ready      control-plane   13m   v1.29.6
-kube-worker-1        NotReady   <none>          11m   v1.29.6
+NAME                 STATUS   ROLES           AGE     VERSION
+kube-control-plane   Ready    control-plane   12m     v1.31.5
+kube-worker-1        Ready    <none>          9m45s   v1.31.5
 ```
 
 Exit the worker node.
