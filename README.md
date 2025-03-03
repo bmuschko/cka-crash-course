@@ -22,5 +22,5 @@ All [exercises](./exercises) are numbered and live in dedicated directories star
 * 🎞️ [KodeKloud: CKA Certification Course – Certified Kubernetes Administrator](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
 * 🧪 [O'Reilly: Katacoda CKA Practice Labs](https://learning.oreilly.com/playlists/65351d22-34eb-4be3-9f35-d9c0b184449f/)
 * 🧪 [Killer Shell: CKA Simulator](https://killer.sh/cka)
-* 🧪 [KillerCoda: CKA Scenarios]([https://killer.sh/cka](https://killercoda.com/cka)
+* 🧪 [KillerCoda: CKA Scenarios](https://killercoda.com/cka)
 * 🧪 [Study4Exam: Certified Kubernetes Administrator Exam](https://www.study4exam.com/linux-foundation/info/cka)
