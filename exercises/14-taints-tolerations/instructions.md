@@ -15,7 +15,7 @@ In this exercise, you will use the concept of taints and tolerations. First, you
 > [!NOTE]
 > Refer to the file [multi-node-cluster-setup.md](../common/multi-node-cluster-setup.md) to configure a cluster with multiple nodes.
 
-1. Define a Pod with the image `nginx` in the YAML manifest file `pod.yaml`
+1. Define a Pod with the image `nginx` in the YAML manifest file `pod.yaml`.
 2. Create the Pod and check which node the Pod is running on.
 3. Add a taint to the node. Set it to `exclusive: yes`.
 4. Modify the live Pod object by adding the following toleration: It should be equal to taint key-value pair and have the effect `NoExecute`.
