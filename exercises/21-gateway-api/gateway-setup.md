@@ -5,7 +5,7 @@
 The Gateway API CRDs do not ship with a Kubernetes cluster. You will have to install them yourself. Run the following command to install the stable release of the CRDs. See the [installation instructions](https://gateway-api.sigs.k8s.io/guides/#installing-gateway-api) for more information.
 
 ```
-$ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/standard-install.yaml
+$ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml
 customresourcedefinition.apiextensions.k8s.io/gatewayclasses.gateway.networking.k8s.io created
 customresourcedefinition.apiextensions.k8s.io/gateways.gateway.networking.k8s.io created
 customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io created
@@ -18,11 +18,11 @@ You will now be able to list the CRDs.
 ```
 $ kubectl get crds
 NAME                                        CREATED AT
-gatewayclasses.gateway.networking.k8s.io    2024-10-05T15:28:20Z
-gateways.gateway.networking.k8s.io          2024-10-05T15:28:20Z
-grpcroutes.gateway.networking.k8s.io        2024-10-05T15:28:20Z
-httproutes.gateway.networking.k8s.io        2024-10-05T15:28:20Z
-referencegrants.gateway.networking.k8s.io   2024-10-05T15:28:21Z
+gatewayclasses.gateway.networking.k8s.io    2025-05-28T21:55:40Z
+gateways.gateway.networking.k8s.io          2025-05-28T21:55:40Z
+grpcroutes.gateway.networking.k8s.io        2025-05-28T21:55:40Z
+httproutes.gateway.networking.k8s.io        2025-05-28T21:55:40Z
+referencegrants.gateway.networking.k8s.io   2025-05-28T21:55:40Z
 ```
 
 ## Installing Envoy Gateway
@@ -30,12 +30,12 @@ referencegrants.gateway.networking.k8s.io   2024-10-05T15:28:21Z
 You will have to [install a Gateway implementation](https://gateway-api.sigs.k8s.io/implementations/) in addition to the Gateway API CRDs. We'll use [Envoy Gateway](https://gateway-api.sigs.k8s.io/implementations/#envoy-gateway) for this example.
 
 ```
-$ helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.1.2 -n envoy-gateway-system --create-namespace
+$ helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.4.0 -n envoy-gateway-system --create-namespace
 
-Pulled: docker.io/envoyproxy/gateway-helm:v1.1.2
-Digest: sha256:71a4a558baef1e1dfc69338276664bcfc34e5f4f33dab2a48f9fd22b8f9f920f
+Pulled: docker.io/envoyproxy/gateway-helm:v1.4.0
+Digest: sha256:97fdb734b1e4ecba282f2134c551c000b96ce9cc2bca9dd1982907610313c108
 NAME: eg
-LAST DEPLOYED: Tue Oct  8 17:20:30 2024
+LAST DEPLOYED: Wed May 28 15:59:17 2025
 NAMESPACE: envoy-gateway-system
 STATUS: deployed
 REVISION: 1
