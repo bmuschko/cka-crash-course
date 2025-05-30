@@ -15,19 +15,18 @@ kube-control-plane   Ready       control-plane   4m27s   v1.31.1
 kube-worker-1        NotReady    <none>          48s     v1.31.1
 ```
 
-The events of the worker node to not expose any apparent issues.
+The conditions section of the worker node indicates an issue with the kubelet.
 
 ```
 $ kubectl describe node kube-worker-1
 ...
-Events:
-  Type    Reason                   Age                    From     Message
-  ----    ------                   ----                   ----     -------
-  Normal  Starting                 4m15s                  kubelet  Starting kubelet.
-  Normal  NodeHasSufficientMemory  4m15s (x2 over 4m15s)  kubelet  Node kube-worker-1 status is now: NodeHasSufficientMemory
-  Normal  NodeHasNoDiskPressure    4m15s (x2 over 4m15s)  kubelet  Node kube-worker-1 status is now: NodeHasNoDiskPressure
-  Normal  NodeHasSufficientPID     4m15s (x2 over 4m15s)  kubelet  Node kube-worker-1 status is now: NodeHasSufficientPID
-  Normal  NodeAllocatableEnforced  4m15s                  kubelet  Updated Node Allocatable limit across pods
+Conditions:
+  Type             Status    LastHeartbeatTime                 LastTransitionTime                Reason              Message
+  ----             ------    -----------------                 ------------------                ------              -------
+  MemoryPressure   Unknown   Thu, 29 May 2025 11:58:18 +0000   Thu, 29 May 2025 11:58:59 +0000   NodeStatusUnknown   Kubelet stopped posting node status.
+  DiskPressure     Unknown   Thu, 29 May 2025 11:58:18 +0000   Thu, 29 May 2025 11:58:59 +0000   NodeStatusUnknown   Kubelet stopped posting node status.
+  PIDPressure      Unknown   Thu, 29 May 2025 11:58:18 +0000   Thu, 29 May 2025 11:58:59 +0000   NodeStatusUnknown   Kubelet stopped posting node status.
+  Ready            Unknown   Thu, 29 May 2025 11:58:18 +0000   Thu, 29 May 2025 11:58:59 +0000   NodeStatusUnknown   Kubelet stopped posting node status.
 ```
 
 Exit the control plane node.
