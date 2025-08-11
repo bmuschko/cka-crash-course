@@ -1,6 +1,6 @@
 # Solution
 
-You can find a detailed description of the upgrade steps in the [offical Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+You can find a detailed description of the upgrade steps in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
 
 ## Upgrading the Control Plane Node
 
