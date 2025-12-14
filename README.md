@@ -17,7 +17,7 @@ All [exercises](./exercises) are numbered and live in dedicated directories star
 * 💬 [Kubernetes Slack Channel #certifications](https://kubernetes.slack.com/)
 * 📚 [O'Reilly: Certified Kubernetes Administrator (CKA) Study Guide, 2nd Edition](https://learning.oreilly.com/library/view/-/9798341608399/)
 * 📚 [O'Reilly: Certified Kubernetes Application Developer (CKAD) Study Guide, 2nd Edition](https://learning.oreilly.com/library/view/certified-kubernetes-application/9781098152857/)
-* 📚 [Manning: Acing the Certified Kubernetes Administrator Exam](https://www.manning.com/books/acing-the-certified-kubernetes-administrator-exam)
+* 📚 [Manning: Acing the Certified Kubernetes Administrator Exam, Second Edition](https://www.manning.com/books/acing-the-certified-kubernetes-administrator-exam-second-edition)
 * 🎞️ [LinkedIn Learning: Certified Kubernetes Administrator (CKA) Cert Prep: The Basics](https://www.linkedin.com/learning/certified-kubernetes-administrator-cka-cert-prep-the-basics)
 * 🎞️ [KodeKloud: CKA Certification Course – Certified Kubernetes Administrator](https://kodekloud.com/p/certified-kubernetes-administrator-with-practice-tests)
 * 🧪 [O'Reilly: Katacoda CKA Practice Labs](https://learning.oreilly.com/playlists/65351d22-34eb-4be3-9f35-d9c0b184449f/)
