@@ -18,4 +18,4 @@ jobs:
       - name: Set up Kubeconform
         uses: bmuschko/setup-kubeconform@v1
       - name: Validate Against Kubernetes Schema
-        run: kubeconform -kubernetes-version=1.33.3 -schema-location default -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' -ignore-filename-pattern=.github/workflows -ignore-filename-pattern=.json$ -summary .
+        run: kubeconform -kubernetes-version=1.34.2 -schema-location default -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' -ignore-filename-pattern=.github/workflows -ignore-filename-pattern=.json$ -summary .
