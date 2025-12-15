@@ -10,7 +10,7 @@
 </p>
 </details>
 
-In this exercise, you will identify the configuration of the etcd database, back it up and restore the original database from a backup file. The command line tool `etcdctl` and `etcdutl` has already been pre-installed on the control plane node.
+In this exercise, you will identify the configuration of the etcd database, back it up and restore the original database from a backup file. The command line tools `etcdctl` and `etcdutl` have already been pre-installed on the control plane node.
 
 > [!NOTE]
 > The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VMware. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Backing up and restoring etcd"](https://learning.oreilly.com/scenarios/cka-prep-backing/9781492095521/).
