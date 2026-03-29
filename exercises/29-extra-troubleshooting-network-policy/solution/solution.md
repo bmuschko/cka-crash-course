@@ -43,24 +43,62 @@ $ curl 192.168.64.2:32593 -m 10
 curl: (28) Connection timed out after 10004 milliseconds
 ```
 
-Create a NetworkPolicy allowing traffic from web-app to mysql-db only on port 3306
+Create NetworkPolicies to allow traffic. The `default-deny` policy blocks all ingress and egress, so you need to:
+
+1. Allow ingress to `web-app` on port 3000 (so external traffic can reach it via the NodePort Service).
+2. Allow egress from `web-app` to `mysql-db` on port 3306.
+3. Allow egress from `web-app` to kube-system for DNS resolution (UDP port 53), since the web application uses the Service name `mysql-service` to connect to the database.
+4. Allow ingress to `mysql-db` on port 3306 from `web-app`.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: my-policy
+  name: web-app
 spec:
   podSelector:
     matchLabels:
-      app: mysql-service
+      app: web-app
+  policyTypes:
+    - Egress
+    - Ingress
   ingress:
-  - ports:
-    - port: 3306
-  - from:
-    - podSelector:
-        matchLabels:
-          app: web-app
+    - ports:
+        - port: 3000
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+    - to:
+        - podSelector:
+            matchLabels:
+              app: mysql-db
+      ports:
+        - protocol: TCP
+          port: 3306
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mysql
+spec:
+  podSelector:
+    matchLabels:
+      app: mysql-db
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: web-app
+      ports:
+        - protocol: TCP
+          port: 3306
 ```
 
 You can now connect to the web application via the Service.
