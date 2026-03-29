@@ -13,7 +13,7 @@
 In this exercise, you will learn how to create a cluster using kubeadm. The cluster will contain of a single control plane node named `kube-control-plane`, and a worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
 
 > [!NOTE]
-> The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VMware. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Installing a Kubernetes cluster"](https://learning.oreilly.com/scenarios/cka-prep-installing/9781492095507/).
+> The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VMware. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Installing a Cluster"](https://learning.oreilly.com/interactive-lab/cka-prep-installing/9781492095507/).
 
 ## Initializing the Control Plane Node
 
