@@ -51,7 +51,7 @@ $ kubectl logs kube-scheduler-kube-control-plane -n kube-system
 E0526 01:22:45.322797       1 run.go:72] "command failed" err="failed to get delegated authentication kubeconfig: failed to get delegated authentication kubeconfig: stat /etc/kubernetes/scheduler-authentication.conf: no such file or directory"
 ```
 
-Check the file `/etc/kubernetes/scheduler-authentication.conf`. It does not exist but there's a file which points to a file that doesn't exist: `/etc/kubernetes/scheduler.conf`.
+Check the file `/etc/kubernetes/scheduler-authentication.conf`. It does not exist, but there is a similar file that does exist: `/etc/kubernetes/scheduler.conf`.
 
 ```
 $ ls /etc/kubernetes/scheduler-authentication.conf

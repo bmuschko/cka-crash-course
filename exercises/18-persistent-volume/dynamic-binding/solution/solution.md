@@ -50,7 +50,7 @@ spec:
   storageClassName: custom
 ```
 
-Create the PersistentVolumeClaim with the following command. You will see that the storage class assigned to the PersistentVolumeClaim. Listing the PersistentVolumes will also reveal that the object has been created for your automatically.
+Create the PersistentVolumeClaim with the following command. You will see that the storage class is assigned to the PersistentVolumeClaim. Listing the PersistentVolumes will also reveal that the object has been created for you automatically.
 
 ```
 $ kubectl create -f pvc.yaml

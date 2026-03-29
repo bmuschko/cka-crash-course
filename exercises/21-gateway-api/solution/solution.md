@@ -100,9 +100,9 @@ httproute.gateway.networking.k8s.io/hello-world-httproute created
 
 ## Accessing the Gateway
 
-Accessing the Gateway differs depending on the Kubernetes cluster you are using. Follow the instructions in the section based on your Kubernetes cluster setup and assumes that you don't have external load balancer support.
+Accessing the Gateway differs depending on the Kubernetes cluster you are using. Follow the instructions in the section based on your Kubernetes cluster setup. This assumes that you don't have external load balancer support.
 
-Get the name of the Envoy service created the by the example Gateway:
+Get the name of the Envoy service created by the example Gateway:
 
 ```
 $ export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=hello-world-gateway -o jsonpath='{.items[0].metadata.name}')
@@ -119,7 +119,7 @@ Forwarding from [::1]:8889 -> 10080
 
 ### Using Minikube
 
-Minikube requires you to open a tunnel before you can access an gateway. In a new terminal window, run the following command and leave it running.
+Minikube requires you to open a tunnel before you can access a gateway. In a new terminal window, run the following command and leave it running.
 
 ```
 $ minikube tunnel

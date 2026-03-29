@@ -11,7 +11,7 @@ $ kubectl config current-context
 johndoe
 ```
 
-Creating a Pod in the current context won't work as the user `johndoe` does have the proper permissions.
+Creating a Pod in the current context won't work as the user `johndoe` does not have the proper permissions.
 
 ```
 $ kubectl run nginx --image=nginx --port=80
