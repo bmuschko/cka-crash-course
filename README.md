@@ -24,3 +24,5 @@ All [exercises](./exercises) are numbered and live in dedicated directories star
 * 🧪 [Killer Shell: CKA Simulator](https://killer.sh/cka)
 * 🧪 [KillerCoda: CKA Scenarios](https://killercoda.com/cka)
 * 🧪 [Study4Exam: Certified Kubernetes Administrator Exam](https://www.study4exam.com/linux-foundation/info/cka)
+* 🧪 [RX-M: CKA Self-Study Course](https://rx-m.com/cka-online-training/)
+* 🧪 [Kubernetes debugging/troubleshooting scenarios](https://github.com/RX-M/bust-a-kube)
