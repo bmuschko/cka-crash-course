@@ -10,7 +10,7 @@ Open an interactive shell to the control plane node.
 $ vagrant ssh kube-control-plane
 ```
 
-Run the `kubeadm init` command as root user. This initializes the control plane node. The output contains follow up command you will keep track of.
+Run the `kubeadm init` command as root user. This initializes the control plane node. The output contains a follow-up command you will keep track of.
 
 ```
 $ sudo kubeadm init --pod-network-cidr 172.18.0.0/16
@@ -96,7 +96,7 @@ Open an interactive shell to the worker node.
 $ vagrant ssh ssh kube-worker-1
 ```
 
-Shell into worker node 1 with the command `vagrant ssh kube-worker-1`, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command showns an example. Remember that the token and SHA256 hash will be different for you.
+Shell into worker node 1 with the command `vagrant ssh kube-worker-1`, and run the `kubeadm join` command. You can simply copy the command from the output of the `init` command. The following command shows an example. Remember that the token and SHA256 hash will be different for you.
 
 ```
 $ sudo kubeadm join 192.168.2.167:6443 --token bibmd6.h4zrig0d7zdr1k87 --discovery-token-ca-cert-hash sha256:b8cf484cea5b05eb9415b3ec6d36f5586330d2f62f332ee9d3336a2a4dabd13b

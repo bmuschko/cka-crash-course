@@ -19,7 +19,7 @@ $ kubectl label nodes minikube-m03 color=red
 node/minikube-m03 labeled
 ```
 
-You can render the assign labels for all nodes using the `--show-labels` command line option.
+You can render the assigned labels for all nodes using the `--show-labels` command line option.
 
 ```
 $ kubectl get nodes --show-labels
@@ -79,7 +79,7 @@ spec:
             - red
 ```
 
-First delete the Pod, then recreate it. The Pod should be scheduled on one of nodes.
+First delete the Pod, then recreate it. The Pod should be scheduled on one of the nodes.
 
 ```
 $ kubectl create -f pod.yaml

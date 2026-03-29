@@ -10,7 +10,7 @@
 </p>
 </details>
 
-In this exercise, you will learn how to troubleshooting the underlying issue of worker node. The cluster will contain of a single control plane node named `kube-control-plane`, and one worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
+In this exercise, you will learn how to troubleshoot the underlying issue of a worker node. The cluster will consist of a single control plane node named `kube-control-plane`, and one worker node named `kube-worker-1`. The existing setup uses virtual machines (VMs) to emulate the cluster environment.
 
 > [!NOTE]
 > The file [vagrant-setup.md](../common/vagrant-setup.md) describes the setup instructions and commands for Vagrant and VMware. If you do not want to use the Vagrant environment, you can use the O'Reilly interactive lab ["Troubleshooting a Worker Node"](https://learning.oreilly.com/interactive-lab/cka-prep-troubleshooting/9781492099222/).
